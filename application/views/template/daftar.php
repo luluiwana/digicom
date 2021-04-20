@@ -60,7 +60,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-check-bold"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Nomor Induk Siswa" type="email">
+                                    <input class="form-control" placeholder="Nomor Induk Siswa" type="email" required>
                                 </div>
                             </div>
                             <div class="form-group mb-3">
@@ -68,7 +68,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Nama Lengkap" >
+                                    <input class="form-control" placeholder="Nama Lengkap" required>
                                 </div>
                             </div>
                             <div class="form-group mb-3">
@@ -90,7 +90,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
+                                    <input class="form-control" placeholder="Password" type="password" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -98,7 +98,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Ulangi Password" type="password">
+                                    <input class="form-control" placeholder="Ulangi Password" type="password" required>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -121,13 +121,15 @@
                         <div class="text-center text-muted mb-4">
                             Daftar Sebagai Guru
                         </div>
-                        <form role="form">
+                       
+
+                        <form role="form" method="post" action="<?=base_url('auth/daftar__')?>">
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-check-bold"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="NIP" type="email">
+                                    <input class="form-control" placeholder="NIP" name="id" required>
                                 </div>
                             </div>
                             <div class="form-group mb-3">
@@ -135,7 +137,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Nama Lengkap" >
+                                    <input class="form-control" placeholder="Nama Lengkap" name="nama" required>
                                 </div>
                             </div>
                            
@@ -144,19 +146,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Password" type="password">
+                                    <input class="form-control" placeholder="Buat Password" name="password" type="password" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-merge input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control" placeholder="Ulangi Password" type="password">
-                                </div>
-                            </div>
+                           
                             <div class="text-center">
-                                <a href="<?=base_url('guru')?>"><button type="button" class="btn btn-primary my-4">Daftar</button></a>
+                            <input type="hidden" name="level" value="guru">
+                            <input type="submit" value="Daftar"  class="btn btn-primary my-4" required>
                             </div>
                         </form>
                     </div>
