@@ -32,3 +32,9 @@ Tabel Surat
 Mengubah format tanggal surat menjadi format indonesia cth:29 Maret 2021	
 Memperbaiki Margin Surat
 Format Telp dan Email pada kop surat
+
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<11 May Malammm>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Database
+    ->Tabel kelas 

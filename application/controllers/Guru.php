@@ -9,6 +9,8 @@ class Guru extends CI_Controller
   {
     parent::__construct();
     $this->load->library('session');
+    $this->load->model('Kelas_model');
+    
     if ($this->session->userdata('level') == '0') {
       $this->load->model('Auth_model');
     } else {
@@ -19,9 +21,11 @@ class Guru extends CI_Controller
   public function index()
   {
     $data = array(
-      'title' => 'Dashboard'
+      'title' => 'Dashboard',
+      'nama'  => $this->session->userdata('nama'),
+      'jml_kelas'=>$this->Kelas_model->jml_kelas(),
+      'kelas'=> $this->Kelas_model->getKelasLimit()
     );
-    echo $this->session->userdata('level');
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_guru');
     $this->load->view('guru/dashboard');
@@ -36,6 +40,27 @@ class Guru extends CI_Controller
     $this->load->view('template/sidebar_guru');
     $this->load->view('guru/kelas');
     $this->load->view('template/footer');
+  }
+  public function buat_kelas()
+  {
+     $data = array(
+      'title' => 'Kelas'
+    );
+    $this->load->view('template/header', $data);
+    $this->load->view('template/sidebar_guru');
+    $this->load->view('guru/buat_kelas');
+    $this->load->view('template/footer');
+  }
+  public function add_kelas(Type $var = null)
+  {
+    $data = array(
+      'nama_kelas' => $this->input->post('nama_kelas'),
+      'nama_sekolah' => $this->input->post('nama_sekolah'),
+      'id_user' => $this->session->userdata('id'),
+    );
+    $this->db->insert('kelas', $data);
+    redirect('guru/lihat_kelas/'.$this->db->insert_id());
+    
   }
   public function lihat_kelas()
   {
