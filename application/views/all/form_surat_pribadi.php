@@ -2,79 +2,73 @@
 <div class="container-fluid mt-3">
     <div class="row ">
         <div class="col-md-12">
-            <a href="<?=base_url($level.'/buat_surat')?>" class="btn btn-outline-primary btn-sm mb-4"><i class="fas fa-chevron-left mr-1"></i> Kembali</a>
+            <a href="<?= base_url($level . '/buat_surat') ?>" class="btn btn-outline-primary btn-sm mb-4"><i
+                    class="fas fa-chevron-left mr-1"></i>Kembali</a>
             <div class="card">
                 <div class="card-header text-center  h3"><b>Surat Pribadi</b></div>
-                <div class="card-body row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Tempat</label>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" action="<?= base_url('surat/add_surat') ?>" method="POST">
+                        <input type="hidden" name="jenis_surat" value="Pribadi">
+                        <div class="text-dark mb-4 h4 bg-gradient-success ml--4 text-white p-2 col-md-3">Pengirim</div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="" class="control-label">Nama Pengirim</label>
+                                <div>
+                                    <input type="text" name="pengirim" class="form-control" value=""
+                                        placeholder="Dewi Ayu Sakdiyyah">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="" class="control-label">Kota Pengirim</label>
+                                <div>
+                                    <input type="text" name="kota" class="form-control" value="" placeholder="Malang">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-dark mb-4 h4 bg-gradient-success ml--4 text-white p-2 col-md-3">Penerima</div>
+                        <!-- Yth. Kepala Sekolah
+SMK Sebelas Maret
+Jalan Soekarno-Hatta No.18
+Lowokwaru, Kota Malang
+65143 -->
+                        <div class="form-group col-md-6">
+                            <label for="" class="control-label">Nama Penerima</label>
                             <div>
-                                <input type="text" name="tempat" class="form-control" value=""
-                                    placeholder="contoh: Malang" required>
+                                <input type="text" name="kota" class="form-control" value="" placeholder="Yth. Kepala Sekolah">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <!-- wajib  -->
-                            <label for="" class="control-label">Tanggal</label>
-                            <div class="input-group date">
-                                <input type="date" id="basicDate" name="tanggal" value="" class="form-control" required>
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="control-label">Penerima</label>
-                            <div class="">
-                                <input type="text" name="nama_tujuan" class="form-control" value=""
-                                    placeholder="contoh: Kakak Desi">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Kota Tujuan</label>
-                            <div class="">
-                                <input type="text" name="kota_tujuan" class="form-control" value=""
-                                    placeholder="contoh: Malang">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="" class="control-label">Salam Pembuka</label>
-                            <div class="">
-                                <input type="text" name="salam_pembuka" class="form-control" value=""
-                                    placeholder="contoh: Salam kangen">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group"> <label for="" class="control-label">Isi Surat</label>
-                            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Salam Penutup</label>
+                        <div class="form-group col-md-6">
+                            <label for="" class="control-label">Instansi Tujuan</label>
                             <div>
-                                <input type="text" name="salam_penutup" class="form-control" value=""
-                                    placeholder="contoh: Adik tercintamu">
+                                <input type="text" name="kota" class="form-control" value="" placeholder="SMK Sebelas Maret">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="control-label">Nama</label>
+                         <div class="form-group col-md-6">
+                            <label for="" class="control-label">Alamay Tujuan</label>
                             <div>
-                                <input type="text" name="nama" placeholder="contoh: Lala" class="form-control">
+                                <input type="text" name="kota" class="form-control" value="" placeholder="SMK Sebelas Maret">
                             </div>
                         </div>
-                    </div>
+                         <div class="form-group col-md-6">
+                            <label for="" class="control-label">Instansi Tujuan</label>
+                            <div>
+                                <input type="text" name="kota" class="form-control" value="" placeholder="SMK Sebelas Maret">
+                            </div>
+                        </div>
+                         <div class="form-group col-md-6">
+                            <label for="" class="control-label">Instansi Tujuan</label>
+                            <div>
+                                <input type="text" name="kota" class="form-control" value="" placeholder="SMK Sebelas Maret">
+                            </div>
+                        </div>
 
-                    <a href="<?=base_url($level.'/preview')?>" class="btn btn-primary text-white form-control">Simpan
-                        Surat</a>
+
                 </div>
+                <input type="submit" value="Simpan Surat" class="btn btn-primary text-white form-control">
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>

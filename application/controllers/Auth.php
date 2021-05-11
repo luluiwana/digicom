@@ -76,7 +76,7 @@ class Auth extends CI_Controller
             if (password_verify($password, $result['password'])) {
                 $sess = array(
                     'username' => $result['username'],
-                    'id' => $result['id'],
+                    'id' => $result['id_user'],
                     'nama' => $result['nama'],
                     'level' => $result['level']
                 );

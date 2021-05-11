@@ -1,3 +1,10 @@
+<?php 
+if ($this->session->userdata('level')==0) {
+    $level='guru';
+}else {
+    $level='siswa';
+}
+?>
 <!-- Page content -->
 <div class="container-fluid mt-3">
     <?php if($level=='siswa'):?>
@@ -7,7 +14,7 @@
     <div><a href="<?=base_url('guru/surat')?>" class="btn btn-sm btn-outline-primary mb-3"><i
                 class="fas fa-chevron-left mr-1"></i> Kembali</a></div>
     <?php endif;?>
-    <a href="<?=base_url($level.'/cetak_surat')?>" class="btn btn-outline-primary btn-sm mt-1"><i
+    <a href="<?=base_url('surat/cetak_surat/'.$id_surat)?>" target="_blank" class="btn btn-outline-primary btn-sm mt-1"><i
             class="fas fa-print"></i> Cetak Surat</a>
     <a href="<?=base_url($level.'/cetak_amplop')?>" class="btn btn-outline-primary btn-sm mt-1"><i
             class="fas fa-envelope"></i> Cetak Amplop</a>
@@ -49,11 +56,9 @@
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><b>Preview Surat</b></div>
+                <div class="card-header"><b>Preview </b></div>
                 <div class="card-body col-md-12">
-                    <?php $file=base_url('file/surat.pdf')?>
-                    <iframe id="pdf-js-viewer" src="<?=$file?>" title="webviewer" frameborder="0" width="800"
-                        height="600"></iframe>
+                    
                 </div>
             </div>
         </div>

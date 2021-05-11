@@ -1,3 +1,4 @@
+<title>Surat Dinas (Block)</title>
 <style>
     @page {
         margin: 40px;
@@ -39,16 +40,20 @@
 
     }
 </style>
-<?php $base = base_url("") ?>
+<?php 
+$base = base_url("");
+foreach ($surat as $row ) :
+?>
+
 <table>
     <tr>
-        <td width="145px"> <img width="100px" src="<?= "file/logo_surat/" . $logo ?>" alt=""></td>
+        <td width="145px"> <img width="100px" src="<?= "file/logo_surat/" . $row->logo ?>" alt=""></td>
         <td>
             <table>
                 <tr>
                     <td class="text-center">
                         <h3 style="margin:0px">
-                            <?= $jenis_instansi ?>
+                            <?= $row->jenis_instansi ?>
                         </h3>
                     </td>
 
@@ -56,16 +61,16 @@
                 <tr>
                     <td class="text-center bold">
                         <h2 style="margin:0px">
-                            <?= $nama_instansi ?></h2>
+                            <?= $row->nama_instansi ?></h2>
                     </td>
 
                 </tr>
                 <tr>
-                    <td class=" text-center "><?= $alamat_instansi ?>
+                    <td class=" text-center "><?= $row->alamat_instansi ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-center small"> Telp : <?= $telp ?> | Email : <?= $email ?> </td>
+                    <td class="text-center small"> Telp : <?= $row->telp ?> | Email : <?= $row->email ?> </td>
                 </tr>
 
             </table>
@@ -76,18 +81,15 @@
 <hr style="border: 2px solid black;">
 <table style="width:100%;padding-top:10px">
     <tr>
-        <td>Tanggal &nbsp;&nbsp; : <?= $tgl_surat ?></td>
-    </tr>
-    <tr>
-        <td>Nomor &nbsp;&nbsp;&nbsp;&nbsp;: <?= $nomor_surat ?></td>
-
+        <td>Nomor &nbsp;&nbsp;&nbsp;&nbsp;: <?= $row->nomor_surat ?></td>
+        <td style="text-align: right;padding-right:100px">Tanggal : <?= $row->tgl_surat ?></td>
 
     </tr>
     <tr>
-        <td>Lampiran : <?= $lampiran ?></td>
+        <td>Lampiran : <?= $row->lampiran ?></td>
     </tr>
     <tr>
-        <td>Perihal &nbsp;&nbsp;&nbsp; : <?= $perihal ?></td>
+        <td>Perihal &nbsp;&nbsp;&nbsp; : <?= $row->perihal ?></td>
     </tr>
 </table>
 
@@ -96,52 +98,53 @@
 
     <tr>
         <td>
-            <?= $ucapan ?>
+            <?= $row->penerima ?>
         </td>
     </tr>
     <tr>
         <td>
-            <?= $nama_instansi ?>
+            <?= $row->instansi_tujuan ?>
         </td>
     </tr>
     <tr>
         <td>
-            <?= $kota ?>
+            <?= $row->kota_tujuan ?>
         </td>
     </tr>
 
     <tr>
-        <td style="padding-top :30px"><?= $salam_buka ?></td>
+        <td style="padding-top :30px"><?= $row->salam_buka ?></td>
     </tr>
 </table>
 
 <div style="margin-top:10px;margin-left:0px;margin-right:0px;">
-    <?= $isi_surat ?>
+    <?= $row->isi_surat ?>
 </div>
 
 <!-- <table style="margin-top:20px">
     <tr>
-        <td><?= $salam_tutup ?></td>
+        <td><?= $row->salam_tutup ?></td>
     </tr>
 </table> -->
 
 <table style="width:100%;margin-top:50px">
 
     <tr>
-        <td style="text-align: left;"><?= $salam_tutup ?></td>
+        <td style="text-align: left;padding-left:520px"><?= $row->salam_tutup ?></td>
     </tr>
     <tr>
-        <td style="text-align: left;">
-            <?= $jabatan ?> </td>
+        <td style="text-align: left;padding-left:520px">
+            <?= $row->jabatan ?> </td>
     </tr>
     <tr>
-        <td style="text-align: left;;padding-top:80px">
-            <?= $pengirim ?> </td>
+        <td style="text-align: left;padding-left:520px;padding-top:80px">
+            <?= $row->pengirim ?> </td>
     </tr>
     <tr>
-        <td style="text-align: left;">
-            NIP : <?= $nomor_identitas ?> </td>
+        <td style="text-align: left;padding-left:520px">
+           <?= $row->nomor_identitas ?> </td>
     </tr>
 
 </table>
+<?php endforeach;?>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> -->

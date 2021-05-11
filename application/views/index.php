@@ -18,10 +18,10 @@ https://templatemo.com/tm-537-art-factory
 
 -->
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/landing-asset/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/landing-asset/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="assets/landing-asset/css/templatemo-art-factory.css">
-    <link rel="stylesheet" type="text/css" href="assets/landing-asset/css/owl-carousel.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/landing-asset/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/landing-asset/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/landing-asset/css/templatemo-art-factory.css">
+    <link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/landing-asset/css/owl-carousel.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
@@ -95,7 +95,7 @@ https://templatemo.com/tm-537-art-factory
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                        <img src="assets/landing-asset/images/left-image.png" class="rounded img-fluid d-block mx-auto"
+                        <img src="<?=base_url()?>/assets/landing-asset/images/left-image.png" class="rounded img-fluid d-block mx-auto"
                             alt="First Vector Graphic">
                     </div>
                 </div>
@@ -112,7 +112,7 @@ https://templatemo.com/tm-537-art-factory
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12"
                     data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="assets/landing-asset/images/right-image.png" class="rounded img-fluid d-block mx-auto"
+                    <img src="<?=base_url()?>/assets/landing-asset/images/right-image.png" class="rounded img-fluid d-block mx-auto"
                         alt="App">
                 </div>
                 <div class="right-text col-lg-5 col-md-12 col-sm-12 mobile-top-fix">
@@ -151,21 +151,21 @@ https://templatemo.com/tm-537-art-factory
                     <p>Proin justo sapien, posuere suscipit tortor in, fermentum mattis elit. Aenean in feugiat purus.</p>
                     <ul>
                         <li>
-                            <img src="assets/landing-asset/images/about-icon-01.png" alt="">
+                            <img src="<?=base_url()?>/assets/landing-asset/images/about-icon-01.png" alt="">
                             <div class="text">
                                 <h6>Nulla ultricies risus quis risus</h6>
                                 <p>You can use this website template for commercial or non-commercial purposes.</p>
                             </div>
                         </li>
                         <li>
-                            <img src="assets/landing-asset/images/about-icon-02.png" alt="">
+                            <img src="<?=base_url()?>/assets/landing-asset/images/about-icon-02.png" alt="">
                             <div class="text">
                                 <h6>Donec consequat commodo purus</h6>
                                 <p>You have no right to re-distribute this template as a downloadable ZIP file on any website.</p>
                             </div>
                         </li>
                         <li>
-                            <img src="assets/landing-asset/images/about-icon-03.png" alt="">
+                            <img src="<?=base_url()?>/assets/landing-asset/images/about-icon-03.png" alt="">
                             <div class="text">
                                 <h6>Sed placerat sollicitudin mauris</h6>
                                 <p>If you have any question or comment, please <a rel="nofollow" href="https://templatemo.com/contact">contact</a> us on TemplateMo.</p>
@@ -174,7 +174,7 @@ https://templatemo.com/tm-537-art-factory
                     </ul>
                 </div>
                 <div class="right-image col-lg-7 col-md-12 col-sm-12 mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                    <img src="assets/landing-asset/images/right-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                    <img src="<?=base_url()?>/assets/landing-asset/images/right-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
                 </div>
             </div>
         </div>
@@ -191,7 +191,7 @@ https://templatemo.com/tm-537-art-factory
                     <div class="item service-item">
                         <!-- <div class="icon" style="background:none; width:100%;"> -->
                         <i><img style=" width: 120px; margin: auto; margin-bottom: 50px;"
-                                src="assets/landing-asset/images/admin.jpg" alt=""></i>
+                                src="<?=base_url()?>/assets/landing-asset/images/admin.jpg" alt=""></i>
                         <!-- </div> -->
                         <h5 class="service-title">Andi Basuki, S.Pd., M.Pd.</h5>
                         <p>Dosen Fakultas Ekonomi, <br> Universitas Negeri Malang</p>
@@ -200,7 +200,7 @@ https://templatemo.com/tm-537-art-factory
                     <div class="item service-item">
                         <!-- <div class="icon" style="background:none; width:100%;"> -->
                         <i><img style=" width: 120px; margin: auto; margin-bottom: 50px;"
-                                src="assets/landing-asset/images/admin.jpg" alt=""></i>
+                                src="<?=base_url()?>/assets/landing-asset/images/admin.jpg" alt=""></i>
                         <!-- </div> -->
                         <h5 class="service-title">Andi Basuki, S.Pd., M.Pd.</h5>
                         <p>Dosen Fakultas Ekonomi, <br> Universitas Negeri Malang</p>
@@ -209,7 +209,7 @@ https://templatemo.com/tm-537-art-factory
                     <div class="item service-item">
                         <!-- <div class="icon" style="background:none; width:100%;"> -->
                         <i><img style=" width: 120px; margin: auto; margin-bottom: 50px;"
-                                src="assets/landing-asset/images/admin.jpg" alt=""></i>
+                                src="<?=base_url()?>/assets/landing-asset/images/admin.jpg" alt=""></i>
                         <!-- </div> -->
                         <h5 class="service-title">Andi Basuki, S.Pd., M.Pd.</h5>
                         <p>Dosen Fakultas Ekonomi, <br> Universitas Negeri Malang</p>
@@ -410,14 +410,14 @@ https://templatemo.com/tm-537-art-factory
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
-    <script src="assets/landing-asset/js/owl-carousel.js"></script>
-    <script src="assets/landing-asset/js/scrollreveal.min.js"></script>
-    <script src="assets/landing-asset/js/waypoints.min.js"></script>
-    <script src="assets/landing-asset/js/jquery.counterup.min.js"></script>
-    <script src="assets/landing-asset/js/imgfix.min.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/owl-carousel.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/scrollreveal.min.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/waypoints.min.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/jquery.counterup.min.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/imgfix.min.js"></script>
 
     <!-- Global Init -->
-    <script src="assets/landing-asset/js/custom.js"></script>
+    <script src="<?=base_url()?>/assets/landing-asset/js/custom.js"></script>
 
 </body>
 

@@ -43,35 +43,35 @@
                         <!-- Indented -->
                         <div class="col-md-9 text-center" style="display:none" id="d-indented">
                             <h4 class="text-center">Contoh Surat Dinas dengan Style Indented</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Dinas/Indented/dinas_intended') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_dinas/Dinas/Indented') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/indented.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Hanging -->
                         <div class="col-md-9 text-center" style="display:none" id="d-hanging">
                             <h4 class="text-center">Contoh Surat Dinas dengan Style Hanging</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Dinas/Hanging/dinas_hanging') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_dinas/Dinas/Hanging') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/hanging.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Block -->
                         <div class="col-md-9 text-center" style="display:none" id="d-block">
                             <h4 class="text-center">Contoh Surat Dinas dengan Style Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Dinas/Block/dinas_blok') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_dinas/Dinas/Block') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/block.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Semi-->
                         <div class="col-md-9 text-center" style="display:none" id="d-semi">
                             <h4 class="text-center">Contoh Surat Dinas dengan Style Semi Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Dinas/Semi-Block/dinas_semiblok') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_dinas/Dinas/Semiblock') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/semi.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Full -->
                         <div class="col-md-9 text-center" style="display:none" id="d-full">
                             <h4 class="text-center">Contoh Surat Dinas dengan Style Full Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Dinas/Full-Block/dinas_fullblok') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_dinas/Dinas/Fullblock') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/full.jpg') ?>" alt="">
                             </div>
                         </div>
@@ -100,35 +100,35 @@
                         <!-- Indented -->
                         <div class="col-md-9 text-center" style="display:none" id="n-indented">
                             <h4 class="text-center">Contoh Surat Niaga dengan Style Indented</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Niaga/Indented') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_niaga/Niaga/Indented') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/indented.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Hanging -->
                         <div class="col-md-9 text-center" style="display:none" id="n-hanging">
                             <h4 class="text-center">Contoh Surat Niaga dengan Style Hanging</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Niaga/Hanging') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_niaga/Niaga/Hanging') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/hanging.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Block -->
                         <div class="col-md-9 text-center" style="display:none" id="n-block">
                             <h4 class="text-center">Contoh Surat Niaga dengan Style Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Niaga/Block') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_niaga/Niaga/Block') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/block.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Semi-->
                         <div class="col-md-9 text-center" style="display:none" id="n-semi">
                             <h4 class="text-center">Contoh Surat Niaga dengan Style Semi Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Niaga/Semi-Block') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_niaga/Niaga/Semiblock') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/semi.jpg') ?>" alt="">
                             </div>
                         </div>
                         <!-- Full -->
                         <div class="col-md-9 text-center" style="display:none" id="n-full">
                             <h4 class="text-center">Contoh Surat Niaga dengan Style Full Block</h4>
-                            <div class="border"> <a href="<?= base_url($level . '/form_surat/Niaga/Full-Block') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
+                            <div class="border"> <a href="<?= base_url($level . '/form_surat_niaga/Niaga/Fullblock') ?>" class="btn bg-gradient-primary text-white mb-2 px-5">Buat Surat</a>
                                 <img class="w-100" src="<?= base_url('file/contoh_surat/full.jpg') ?>" alt="">
                             </div>
                         </div>
