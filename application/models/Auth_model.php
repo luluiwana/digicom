@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth_model extends CI_Model {
+class Auth_model extends CI_Model
+{
 
   // ------------------------------------------------------------------------
 
@@ -14,11 +15,17 @@ class Auth_model extends CI_Model {
 
 
   // ------------------------------------------------------------------------
-  public function daftar($data)
+
+
+  public function daftar_guru($data)
   {
-    $this->db->insert('user',$data);
+    $this->db->insert('users', $data);
   }
 
+  public function daftar_siswa($data)
+  {
+    $this->db->insert('users', $data);
+  }
   // ------------------------------------------------------------------------
 
 }

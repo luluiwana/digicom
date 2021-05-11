@@ -15,8 +15,7 @@
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                xmlns="http://www.w3.org/2000/svg">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
             </svg>
         </div>
@@ -31,7 +30,16 @@
                         <div class="text-center text-muted mb-4">
                             Login
                         </div>
-                        <form method="post" action="<?=base_url('auth/loginp')?>">
+                        <?php
+                        if ($this->session->flashdata('login-failed')) {
+                        ?>
+
+                        <?php
+                            echo $this->session->flashdata('login-failed');
+                            // echo $this->session->userdata('level');
+                        }
+                        ?>
+                        <form method="post" action="<?= base_url('auth/loginp') ?>">
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
@@ -56,8 +64,7 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                        <span class="text-white"><small>Belum memiliki akun?</small></span> <a
-                            href="<?=base_url('auth/daftar')?>" class="text-light"><small>Buat Akun Baru</small></a>
+                        <span class="text-white"><small>Belum memiliki akun?</small></span> <a href="<?= base_url('auth/daftar') ?>" class="text-light"><small>Buat Akun Baru</small></a>
                     </div>
                 </div>
             </div>

@@ -8,22 +8,22 @@
     <meta name="author" content="Creative Tim">
     <title>Digital Corespondence Management</title>
     <!-- Favicon -->
-    <link rel="icon" href="<?=base_url('assets/img/brand/favicon.png')?>" type="image/png">
+    <link rel="icon" href="<?= base_url('assets/img/brand/favicon.png') ?>" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <!-- Icons -->
-    <link rel="stylesheet" href="<?=base_url('assets/vendor/nucleo/css/nucleo.css')?>" type="text/css">
-    <link rel="stylesheet" href="<?=base_url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')?>"
-        type="text/css">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/nucleo/css/nucleo.css') ?>" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>" type="text/css">
     <!-- Page plugins -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf_viewer.min.css">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="<?=base_url('assets/css/argon.css?v=1.2.0')?>" type="text/css">
+    <link rel="stylesheet" href="<?= base_url('assets/css/argon.css?v=1.2.0') ?>" type="text/css">
+    <link href="<?= base_url('assets/js/summernote/') ?>summernote.css" rel="stylesheet">
 
     <style>
-    body {
-        font-size: 14px;
-    }
+        body {
+            font-size: 14px;
+        }
     </style>
 
 </head>
