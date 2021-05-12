@@ -38,3 +38,13 @@ Format Telp dan Email pada kop surat
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<11 May Malammm>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Database
     ->Tabel kelas 
+
+Feature
+    -> Buat kelas
+    -> Semua Kelas
+    -> Lihat Kelas 
+    -> Edit Kelas
+    -> Tambah Materi
+    -> Edit Materi
+    -> Lihat Materi
+    -> Hapus Materi

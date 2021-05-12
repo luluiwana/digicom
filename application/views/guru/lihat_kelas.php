@@ -1,7 +1,10 @@
 <!-- Header -->
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
-        <h3 class="text-white text-center mb-4">Kelas A</h3>
+        <?php foreach($getKelasById as $row):?>
+        <?php $id_kelas=$row->id_kelas?>
+        <h3 class="text-white text-center mb-4"><?=$row->nama_kelas.' - '.$row->nama_sekolah?></h3>
+        <?php endforeach;?>
         <div class="header-body">
             <!-- Card stats -->
             <div class="row">
@@ -33,7 +36,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Materi</h5>
-                                    <span class="h2 font-weight-bold mb-0">24</span>
+                                    <span class="h2 font-weight-bold mb-0"><?=$jml_materi?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -68,14 +71,13 @@
                     <div class="card card-stats">
                         <!-- Card body -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="<?=base_url('guru/data_siswa')?>" class="btn btn-sm btn-outline-dark mb-2"><i class="fas fa-users mr-2"></i> Data Siswa</a>
-                                   
-                                </div>
-
+                            <div class="">
+                                <a href="<?=base_url('guru/data_siswa')?>" class="btn btn-sm btn-outline-dark mb-2"><i
+                                        class="fas fa-users mr-1"></i> Data Siswa</a>
+                                    <a href="<?=base_url('guru/edit_kelas/'.$id_kelas)?>" class="btn btn-sm btn-outline-dark "><i
+                                        class="fas fa-cog mr-1"></i> Pengaturan Kelas</a>
+                                    
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -95,7 +97,8 @@
                             <h3 class="mb-0">Materi</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="<?=base_url('guru/tambah_materi')?>" class="btn btn-sm btn-primary">Tambah Materi</a>
+                            <a href="<?=base_url('guru/tambah_materi/'.$id_kelas)?>"
+                                class="btn btn-sm btn-primary">Tambah Materi</a>
                         </div>
                     </div>
                 </div>
@@ -109,15 +112,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $x=1; foreach($materi as $row):?>
                             <tr>
                                 <th scope="row">
-                                    1
+                                    <?=$x?>
                                 </th>
                                 <td class="text-wrap">
-                                    <a href="<?=base_url('guru/materi')?>">Materi 1 - Pengantar Ilmu Administrasi</a>
+                                    <a
+                                        href="<?=base_url('guru/materi/'.$row->id_kelas.'/'.$row->id_materi)?>"><?=$row->judul_materi?></a>
                                 </td>
                             </tr>
-
+                            <?php $x++; endforeach;?>
                         </tbody>
                     </table>
                 </div>
@@ -149,7 +154,8 @@
                                 <td>1</td>
 
                                 <td>
-                                    <a href="<?=base_url('guru/lihat_tugas')?>">Tugas 1 - Pengantar Ilmu Administrasi</a>
+                                    <a href="<?=base_url('guru/lihat_tugas')?>">Tugas 1 - Pengantar Ilmu
+                                        Administrasi</a>
                                 </td>
 
                             </tr>

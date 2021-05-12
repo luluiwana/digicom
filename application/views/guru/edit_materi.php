@@ -5,21 +5,24 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><b>Edit Materi</b></div>
+                <?php foreach($materi as $row):?>
+                <form action="<?=base_url('')?>guru/update_materi/<?=$row->id_kelas?>/<?=$row->id_materi?>/<?=$row->filename?>" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div class="form-group mb-3">
                         <label for="">Judul Materi</label>
-                        <input type="text" class="form-control" value="Pengantar Ilmu Administrasi">
+                        <input type="text" class="form-control" value="<?=$row->judul_materi?>" required name="judul_materi">
                     </div>
                      <div class="form-group mb-3">
                         <label for="">Upload Materi</label>
-                        <input type="file" class="form-control">
+                        <input type="file" class="form-control" name="file">
                     </div>
 
                     <div class="text-center">
-                        <a href="<?=base_url('guru/materi')?>"><button type="button"
-                                class="btn btn-primary my-4">Edit Materi</button></a>
+                        <input type="submit" value="Edit Materi" class="btn btn-primary my-4">
                     </div>
                 </div>
+                </form>
+                <?php endforeach;?>
             </div>
         </div>
 

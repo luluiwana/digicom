@@ -5,21 +5,23 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><b>Tambah Materi</b></div>
+                <form action="<?=base_url()?>guru/add_materi" method="post" enctype='multipart/form-data'>
                 <div class="card-body">
                     <div class="form-group mb-3">
                         <label for="">Judul Materi</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="judul_materi" required>
                     </div>
                      <div class="form-group mb-3">
-                        <label for="">Upload Materi</label>
-                        <input type="file" class="form-control">
+                        <label for="">Upload Materi (.pdf)</label>
+                        <input type="file" class="form-control" name="file" accept=".pdf" required>
                     </div>
+                    <input type="hidden" name="id_kelas" value="<?=$id_kelas?>">
 
                     <div class="text-center">
-                        <a href="<?=base_url('guru/lihat_kelas')?>"><button type="button"
-                                class="btn btn-primary my-4">Tambah Materi</button></a>
+                        <input type="submit" value="Tambah Materi" class="btn btn-primary my-4">
                     </div>
                 </div>
+                </form>
             </div>
         </div>
 

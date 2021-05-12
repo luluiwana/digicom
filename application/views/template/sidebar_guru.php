@@ -24,12 +24,7 @@
                 <span class="nav-link-text">Kelas</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link <?php if($title=='Surat'){echo 'active';}?>" href="<?=base_url('guru/surat')?>">
-                <i class="ni ni-email-83 text-primary"></i>
-                <span class="nav-link-text">Surat</span>
-              </a>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link <?php if($title=='Profil'){echo 'active';}?>" href="<?=base_url('guru/profil')?>">
                 <i class="ni ni-single-02 text-primary"></i>
@@ -85,7 +80,9 @@
                             <div class="media align-items-center">
                               
                                 <div class="media-body  ml-2  d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Joko</span>
+                                    <span class="mb-0 text-sm  font-weight-bold"><?=
+                                    $this->session->userdata('nama');
+                                    ?></span>
                                 </div>
                             </div>
                         </a>

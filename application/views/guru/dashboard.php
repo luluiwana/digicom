@@ -116,7 +116,7 @@
             <?php else:?>
             <div class="card mt-4">
                 <div class="card-header border-0 h3  bg-gradient-primary text-white">
-                    Kelas Saya
+                    Kelas Terbaru
                     <a href="<?=base_url()?>guru/buat_kelas" class="btn btn-sm bg-white float-right">Buat Kelas</a>
                 </div>
                 <div class="card-body">
@@ -128,7 +128,7 @@
                                     <td class="text-left">
                                         <h4>
                                             <a
-                                                href="<?=base_url()?>lihat_kelas/<?=$row->id_kelas?>"><?=$row->nama_kelas.' - '.$row->nama_sekolah?></a>
+                                                href="<?=base_url()?>guru/lihat_kelas/<?=$row->id_kelas?>"><?=$row->nama_kelas.' - '.$row->nama_sekolah?></a>
                                         </h4>
                                     </td>
                                     <td><i class="fa fa-angle-double-right"></i></td>
