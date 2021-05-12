@@ -26,6 +26,10 @@ class Auth_model extends CI_Model
   {
     $this->db->insert('users', $data);
   }
+  public function getKelas()
+  {
+    return $this->db->get('kelas')->result();
+  }
   // ------------------------------------------------------------------------
 
 }

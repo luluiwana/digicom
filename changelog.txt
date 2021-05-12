@@ -35,11 +35,14 @@ Format Telp dan Email pada kop surat
 
 
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<11 May Malammm>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<12 May 2021>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Database
-    ->Tabel kelas 
+    -> Tabel kelas 
+    -> Tabel Materi
+    -> Tabel Tugas
 
 Feature
+    -> Daftar Siswa (tambah keterangan kelas)
     -> Buat kelas
     -> Semua Kelas
     -> Lihat Kelas 
@@ -48,3 +51,5 @@ Feature
     -> Edit Materi
     -> Lihat Materi
     -> Hapus Materi
+    -> Upload tugas
+    -> Lihat tugas

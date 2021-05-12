@@ -17,7 +17,7 @@
                         <input type="file" class="form-control" name="file">
                     </div>
 
-                    <div class="text-center">
+                    <div class="t">
                         <input type="submit" value="Edit Materi" class="btn btn-primary my-4">
                     </div>
                 </div>

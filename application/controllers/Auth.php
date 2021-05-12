@@ -12,7 +12,13 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('index');
+        if ($this->session->userdata('level') == '0') {
+            redirect('guru', 'refresh');
+        } elseif ($this->session->userdata('level') == '1') {
+            redirect('siswa', 'refresh');
+        } else {
+            $this->load->view('index');
+        }
     }
     public function login()
     {
@@ -26,7 +32,8 @@ class Auth extends CI_Controller
     public function daftar()
     {
         $data = array(
-            'title' => 'Buat Akun Baru'
+            'title' => 'Buat Akun Baru',
+            'kelas'=>$this->Auth_model->getKelas()
         );
         $this->load->view('template/login_header', $data);
         $this->load->view('template/daftar');
@@ -72,7 +79,6 @@ class Auth extends CI_Controller
         $result = $this->db->get_where('users', ['username' => $username])->row_array();
 
         if ($result) {
-
             if (password_verify($password, $result['password'])) {
                 $sess = array(
                     'username' => $result['username'],

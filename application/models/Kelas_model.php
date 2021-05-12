@@ -19,6 +19,14 @@ class Kelas_model extends CI_Model
         $row=$this->db->get('materi')->row();
         return $row->c;
     }
+    public function countSiswaByClass($id_kelas)
+    {
+        # SELECT count(*) as c FROM `users` WHERE kelas=1
+        $this->db->select('count(*) as c');
+        $this->db->where('kelas',$id_kelas);
+        $row=$this->db->get('users')->row();
+        return $row->c;
+    }
     public function getKelasLimit()
     {
         $this->db->where('id_user', $this->session->userdata('id'));
@@ -47,6 +55,21 @@ class Kelas_model extends CI_Model
     {
         $this->db->where('id_materi',$id_materi);
         return $this->db->get('materi')->result();
+    }
+    public function getSiswaByKelas($id_kelas)
+    {
+        $this->db->where('kelas',$id_kelas);
+        return $this->db->get('users')->result();
+    }
+    public function getTugasByKelas($id_kelas)
+    {
+        $this->db->where('id_kelas',$id_kelas);
+        return $this->db->get('tugas')->result();
+    }
+    public function getTugasById($id_tugas)
+    {
+        $this->db->where('id_tugas',$id_tugas);
+        return $this->db->get('tugas')->result();
     }
    
 }

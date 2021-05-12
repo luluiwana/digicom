@@ -2,34 +2,28 @@
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-md-12">
-            <a href="<?=base_url('guru/lihat_kelas')?>" class="btn btn-outline-primary btn-sm mb-3"><i
+            <a href="<?=base_url('guru/lihat_kelas/'.$id_kelas)?>" class="btn btn-outline-primary btn-sm mb-3"><i
                     class="	fas fa-chevron-left mr-1"></i>Kembali ke
                 Kelas</a>
-
+            <?php foreach($tugas as $row):?>
             <div class="card">
-                <div class="card-header"><b>Tugas 1 - Pengantar Ilmu Administrasi</b></div>
+                <div class="card-header"><b><?=$row->judul_tugas?></b></div>
                 <div class="card-body">
-                    <div>
-                        Buatlah Sebuah Surat Dinas dengan Style Hanging dan Indented! <br>
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                        distribution of letters, as opposed to using 'Content here, content here', making it look like
-                        readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
-                        their default model text, and a search for 'lorem ipsum' will uncover many web sites still in
-                        their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on
-                        purpose (injected humour and the like).
+                    <div >
+                       <?=$row->deskripsi?>
                     </div>
-                    <div class="text-primary mt-2 h5">
-                        Batas Penyelesaian: 1 April 2021
+                    <div class="text-danger mt-2 h5">
+                        Batas Penyelesaian: <?=$row->date?>
                     </div>
                     <div class="mt-3">
-                        <a href="<?=base_url('guru/download_tugas')?>" class="btn btn-outline-primary btn-sm"><i
+                        <a href="<?=base_url('guru/download_tugas/'.$row->filename)?>" class="btn btn-outline-primary btn-sm"><i
                                 class="fas fa-print mr-1"></i> Download Lampiran Tugas</a>
-                        <a href="<?=base_url('guru/edit_tugas')?>" class="btn btn-outline-primary btn-sm"><i
+                        <a href="<?=base_url('guru/edit_tugas/'.$row->id_kelas)?>" class="btn btn-outline-primary btn-sm"><i
                                 class="fas fa-edit mr-1"></i> Edit Tugas</a>
                     </div>
                 </div>
             </div>
+            <?php endforeach;?>
         </div>
         <div class="col-md-12">
             <div class="card">

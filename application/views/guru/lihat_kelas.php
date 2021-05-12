@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Siswa</h5>
-                                    <span class="h2 font-weight-bold mb-0">30</span>
+                                    <span class="h2 font-weight-bold mb-0"><?=$jml_siswa?></span>
 
                                 </div>
                                 <div class="col-auto">
@@ -72,7 +72,7 @@
                         <!-- Card body -->
                         <div class="card-body">
                             <div class="">
-                                <a href="<?=base_url('guru/data_siswa')?>" class="btn btn-sm btn-outline-dark mb-2"><i
+                                <a href="<?=base_url('guru/data_siswa/'.$id_kelas)?>" class="btn btn-sm btn-outline-dark mb-2"><i
                                         class="fas fa-users mr-1"></i> Data Siswa</a>
                                     <a href="<?=base_url('guru/edit_kelas/'.$id_kelas)?>" class="btn btn-sm btn-outline-dark "><i
                                         class="fas fa-cog mr-1"></i> Pengaturan Kelas</a>
@@ -136,7 +136,7 @@
                             <h3 class="mb-0">Tugas</h3>
                         </div>
                         <div class="col text-right">
-                            <a href="<?=base_url('guru/tambah_tugas')?>" class="btn btn-sm btn-primary">Tambah Tugas</a>
+                            <a href="<?=base_url('guru/tambah_tugas/'.$id_kelas)?>" class="btn btn-sm btn-primary">Tambah Tugas</a>
                         </div>
                     </div>
                 </div>
@@ -150,15 +150,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $x=1; foreach($tugas as $row):?>
                             <tr>
-                                <td>1</td>
-
+                                <td><?=$x?></td>
+                                
                                 <td>
-                                    <a href="<?=base_url('guru/lihat_tugas')?>">Tugas 1 - Pengantar Ilmu
-                                        Administrasi</a>
+                                    <a href="<?=base_url('guru/lihat_tugas/'.$row->id_kelas.'/'.$row->id_tugas)?>"><?=$row->judul_tugas?></a>
                                 </td>
+                                
 
                             </tr>
+                            <?php $x++; endforeach;?>
 
                         </tbody>
                     </table>

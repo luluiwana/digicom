@@ -64,11 +64,13 @@ class Guru extends CI_Controller
     public function lihat_kelas($id_kelas)
     {
         $data = array(
-      'title' => 'Kelas',
-      'getKelasById'=>$this->Kelas_model->getKelasById($id_kelas),
-      'materi'=>$this->Kelas_model->getMateriByKelas($id_kelas),
-      'jml_materi'=>$this->Kelas_model->countMateriByClass($id_kelas),
-    );
+        'title' => 'Kelas',
+        'getKelasById'=>$this->Kelas_model->getKelasById($id_kelas),
+        'materi'=>$this->Kelas_model->getMateriByKelas($id_kelas),
+        'jml_materi'=>$this->Kelas_model->countMateriByClass($id_kelas),
+        'jml_siswa'=>$this->Kelas_model->countSiswaByClass($id_kelas),
+        'tugas'=>$this->Kelas_model->getTugasByKelas($id_kelas),
+        );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/lihat_kelas');
@@ -80,7 +82,7 @@ class Guru extends CI_Controller
             'title'=>'Kelas',
             'kelas'=>$this->Kelas_model->getKelasById($id_kelas)
         );
-         $this->load->view('template/header', $data);
+        $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/edit_kelas');
         $this->load->view('template/footer');
@@ -91,9 +93,9 @@ class Guru extends CI_Controller
             'nama_kelas' => $this->input->post('nama_kelas'),
             'nama_sekolah' => $this->input->post('nama_sekolah'),
         );
-        $this->db->where('id_kelas',$id_kelas);
+        $this->db->where('id_kelas', $id_kelas);
         $this->db->update('kelas', $data);
-        redirect('guru/lihat_kelas/'.$id_kelas,'refresh');    
+        redirect('guru/lihat_kelas/'.$id_kelas, 'refresh');
     }
  
     public function materi($id_kelas, $id_materi)
@@ -206,20 +208,49 @@ class Guru extends CI_Controller
         unlink('./file/materi/'.$id_kelas.'/'.$filename); // This is an absolute path to the file
         redirect('guru/lihat_kelas/'.$id_kelas, 'refresh');
     }
-    public function tambah_tugas()
+    public function tambah_tugas($id_kelas)
     {
         $data = array(
       'title' => 'Kelas',
+      'id_kelas'=>$id_kelas,
     );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/tambah_tugas');
         $this->load->view('template/footer');
     }
-    public function lihat_tugas()
+    public function add_tugas()
+    {
+        $config['file_name'] = uniqid().'.pdf';
+        $data = array(
+        'id_kelas'=>$this->input->post('id_kelas'),
+        'judul_tugas'=>$this->input->post('judul_tugas'),
+        'deskripsi'=>$this->input->post('deskripsi'),
+        'date'=>$this->input->post('date'),
+        'filename'=>$config['file_name'],
+        );
+        $config['upload_path']          = "file/tugas/";
+        $config['allowed_types']        = 'pdf';
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('file')) {
+            $this->session->set_flashdata('error_msg', $this->upload->display_errors());
+            echo $this->upload->display_errors();
+        } else {
+            $this->db->insert('tugas', $data);
+      
+            redirect('guru/lihat_kelas/'.$data['id_kelas'], 'refresh');
+        }
+
+    }
+    public function lihat_tugas($id_kelas,$id_tugas)
     {
         $data = array(
       'title' => 'Kelas',
+      'id_kelas'=>$id_kelas,
+      'tugas'=>$this->Kelas_model->getTugasById($id_tugas),
+      
     );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
@@ -229,8 +260,8 @@ class Guru extends CI_Controller
     public function edit_tugas()
     {
         $data = array(
-      'title' => 'Kelas',
-    );
+        'title' => 'Kelas',
+        );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/edit_tugas');
@@ -239,17 +270,19 @@ class Guru extends CI_Controller
     public function hasil_tugas()
     {
         $data = array(
-      'title' => 'Kelas',
+        'title' => 'Kelas',
     );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/hasil_tugas');
         $this->load->view('template/footer');
     }
-    public function data_siswa()
+    public function data_siswa($id_kelas)
     {
         $data = array(
-      'title' => 'Kelas',
+        'title' => 'Kelas',
+        'siswa'=>$this->Kelas_model->getSiswaByKelas($id_kelas),
+        'kelas'=>$this->Kelas_model->getKelasById($id_kelas),
     );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
@@ -270,9 +303,9 @@ class Guru extends CI_Controller
         force_download('./file/materi/'.$id_kelas.'/'.$filename, null);
         redirect('guru/materi/'.$id_kelas.'/'.$id_materi);
     }
-    public function download_tugas()
+    public function download_tugas($file)
     {
-        force_download('file/materi/1.pdf', null);
-        redirect('guru/lihat_tugas');
+        force_download('file/tugas/'.$file, null);
+        redirect('guru/lihat_tugas/');
     }
 }

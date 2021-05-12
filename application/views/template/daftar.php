@@ -79,12 +79,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-books"></i></span>
                                     </div>
-                                    <select name="kelas" class="form-control">
+                                    <select name="kelas" class="form-control" required>
                                         <option value="">Pilih Kelas</option>
-                                        <option value="">Kelas A</option>
-                                        <option value="">Kelas B</option>
-                                        <option value="">Kelas C</option>
-                                        <option value="">Kelas D</option>
+                                        <?php foreach($kelas as $row):?>
+                                        <option name="id_kelas" value="<?=$row->id_kelas?>"><?=$row->nama_sekolah.' - '.$row->nama_kelas?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>

@@ -81,7 +81,7 @@ $(document).ready(function() {
 });
         </script>
 
-        <script>
+<script>
 $('#isi_surat_dinas').summernote({
     // placeholder: 'Masukkan Isi',
     tabsize: 4,
@@ -89,17 +89,20 @@ $('#isi_surat_dinas').summernote({
     tabDisable: true
 
 });
-        </script>
-        <script>
+</script>
+<script>
 $(document).ready(function() {
     $('#kelas').DataTable({
         "paging": false,
         "info": false
     });
-
+     $('#siswa').DataTable({
+        "paging": false,
+        "info": false
+    });
 });
-        </script>
-        </body>
+</script>
+</body>
 
 
 
