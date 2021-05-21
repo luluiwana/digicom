@@ -1,49 +1,51 @@
+
+
 <title>Surat Dinas (Hanging)</title>
 <style>
-    @page {
-        margin: 40px;
-        margin-top: 20px;
-    }
+@page {
+    margin: 2.5cm;
+}
 
-    .text-center {
-        text-align: center;
-    }
+.text-center {
+    text-align: center;
+}
 
-    .bold {
-        font-weight: bold;
-    }
+.bold {
+    font-weight: bold;
+}
 
-    .small {
-        font-size: small;
-    }
+.small {
+    font-size: small;
+}
 
-    .border {
-        border: 1px solid black
-    }
+.border {
+    border: 1px solid black
+}
 
-    .p-1 {
-        padding: 3px;
-    }
+.p-1 {
+    padding: 3px;
+}
 
-    .top {
-        vertical-align: top;
-    }
+.top {
+    vertical-align: top;
+}
 
-    div>p {
-        text-indent: -3em;
-        margin: 8px;
-        margin-left: 3em;
-        text-align: justify;
-        line-height: 1.5em;
-        margin-top: 1px;
-
+div>p {
+    text-indent: -3em;
+    margin: 8px;
+    margin-left: 3em;
+    text-align: justify;
+    line-height: 1.5em;
+    margin-top: 1px;
 
 
-    }
+
+}
 </style>
 <?php $base = base_url("") ;
 foreach ($surat as $row ) :
 ?>
+
 <table>
     <tr>
         <td width="145px"> <img width="100px" src="<?= "file/logo_surat/" . $row->logo ?>" alt=""></td>
@@ -116,8 +118,14 @@ foreach ($surat as $row ) :
     </tr>
 </table>
 
-<div style="margin-top:10px;;margin-right:0px">
-    <?= $row->isi_surat ?>
+<?php
+$find="<li>";
+$replace="<li style='list-style-type: none;  padding-left: 22px;  '> ";
+$str=str_replace($find,$replace,$row->isi_surat)
+?>
+
+<div style="margin-top:10px; ;text-indent: -22px ;">
+    <?= $str ?>
 </div>
 
 <!-- <table style="margin-top:20px">
@@ -127,22 +135,22 @@ foreach ($surat as $row ) :
 
 </table> -->
 
-<table style="width:100%;margin-top:50px">
+<table style="width:100%;margin-top:10px; margin-left:400px">
 
     <tr>
-        <td style="text-align: left;padding-left:520px"><?= $row->salam_tutup ?></td>
+        <td style="text-align: left;"><?= $row->salam_tutup ?></td>
     </tr>
     <tr>
-        <td style="text-align: left;padding-left:520px">
+        <td style="text-align: left;">
             <?= $row->jabatan ?> </td>
     </tr>
     <tr>
-        <td style="text-align: left;padding-left:520px;padding-top:80px">
+        <td style="text-align: left;padding-top:80px">
             <?= $row->pengirim ?> </td>
     </tr>
     <tr>
-        <td style="text-align: left;padding-left:520px">
-             <?= $row->nomor_identitas ?> </td>
+        <td style="text-align: left;d">
+            <?= $row->nomor_identitas ?> </td>
     </tr>
 
 </table>
