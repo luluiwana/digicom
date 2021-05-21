@@ -85,7 +85,9 @@
                             <div class="media align-items-center">
                               
                                 <div class="media-body  ml-2  d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Samsul</span>
+                                    <span class="mb-0 text-sm  font-weight-bold">
+                                      <?=$this->session->userdata('nama');?>
+                                    </span>
                                 </div>
                             </div>
                         </a>

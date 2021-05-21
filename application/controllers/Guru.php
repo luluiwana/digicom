@@ -69,6 +69,7 @@ class Guru extends CI_Controller
         'materi'=>$this->Kelas_model->getMateriByKelas($id_kelas),
         'jml_materi'=>$this->Kelas_model->countMateriByClass($id_kelas),
         'jml_siswa'=>$this->Kelas_model->countSiswaByClass($id_kelas),
+        'jml_tugas'=>$this->Kelas_model->countTugasByClass($id_kelas),
         'tugas'=>$this->Kelas_model->getTugasByKelas($id_kelas),
         );
         $this->load->view('template/header', $data);
@@ -244,11 +245,11 @@ class Guru extends CI_Controller
         }
 
     }
-    public function lihat_tugas($id_kelas,$id_tugas)
+    public function lihat_tugas($id_tugas)
     {
         $data = array(
       'title' => 'Kelas',
-      'id_kelas'=>$id_kelas,
+      'id_kelas'=>$this->Kelas_model->getKelasByTugas($id_tugas),
       'tugas'=>$this->Kelas_model->getTugasById($id_tugas),
       
     );
@@ -257,16 +258,60 @@ class Guru extends CI_Controller
         $this->load->view('guru/lihat_tugas');
         $this->load->view('template/footer');
     }
-    public function edit_tugas()
+    public function edit_tugas($id_tugas)
     {
         $data = array(
         'title' => 'Kelas',
+      'tugas'=>$this->Kelas_model->getTugasById($id_tugas),
+
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_guru');
         $this->load->view('guru/edit_tugas');
         $this->load->view('template/footer');
     }
+    public function update_tugas($id_tugas,$filename)
+    {
+        $config['file_name'] = uniqid().'.pdf';
+        $config['upload_path']          = "file/tugas/";
+        $config['allowed_types']        = 'pdf';
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+       
+        if (!$this->upload->do_upload('file')) {
+            $data = array(
+              'judul_tugas' => $this->input->post('judul_tugas'),
+              'deskripsi' => $this->input->post('deskripsi'),
+              'date' => $this->input->post('date'),
+            );
+            $this->db->where('id_tugas', $id_tugas);
+            $this->db->update('tugas', $data);
+        } else {
+            $data = array(
+              'judul_tugas' => $this->input->post('judul_tugas'),
+              'deskripsi' => $this->input->post('deskripsi'),
+              'date' => $this->input->post('date'),
+              'filename'=>$config['file_name'],
+            );
+            unlink('./file/tugas/'.$filename); // This is an absolute path to the file
+
+            $this->db->where('id_tugas', $id_tugas);
+            $this->db->update('tugas', $data);
+        }
+        
+        redirect('guru/lihat_tugas/'.$id_tugas, 'refresh');
+
+    }
+     public function hapus_tugas($tugas,$filename)
+    {
+        $id_kelas=$this->Kelas_model->getKelasByTugas($tugas);
+        $this->db->where('id_tugas', $tugas);
+        $this->db->delete('tugas');
+        unlink('./file/tugas/'.$filename); // This is an absolute path to the file
+        redirect('guru/lihat_kelas/'.$id_kelas, 'refresh');
+    }
+
     public function hasil_tugas()
     {
         $data = array(

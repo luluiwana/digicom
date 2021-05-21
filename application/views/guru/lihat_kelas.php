@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Tugas</h5>
-                                    <span class="h2 font-weight-bold mb-0">10</span>
+                                    <span class="h2 font-weight-bold mb-0"><?=$jml_tugas?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -155,7 +155,7 @@
                                 <td><?=$x?></td>
                                 
                                 <td>
-                                    <a href="<?=base_url('guru/lihat_tugas/'.$row->id_kelas.'/'.$row->id_tugas)?>"><?=$row->judul_tugas?></a>
+                                    <a href="<?=base_url('guru/lihat_tugas/'.$row->id_tugas)?>"><?=$row->judul_tugas?></a>
                                 </td>
                                 
 

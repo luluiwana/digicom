@@ -13,7 +13,7 @@
                         <label for="">Nama Sekolah</label>
                         <input type="text" name="nama_sekolah" class="form-control" placeholder="Masukkan Nama Sekolah" id="" required value="<?=$row->nama_sekolah?>">
                     </div>
-                    <input type="submit" class="btn btn-primary bg-gradient-primary" value="Edit Kelas">
+                    <input type="submit" class="btn btn-primary bg-gradient-primary" value="Simpan">
                 </form>
             <?php endforeach;?>
             </div>

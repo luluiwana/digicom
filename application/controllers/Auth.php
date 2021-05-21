@@ -84,6 +84,7 @@ class Auth extends CI_Controller
                     'username' => $result['username'],
                     'id' => $result['id_user'],
                     'nama' => $result['nama'],
+                    'kelas' => $result['kelas'],
                     'level' => $result['level']
                 );
                 if ($result['level'] == 1) {

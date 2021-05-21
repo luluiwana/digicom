@@ -16,14 +16,14 @@ class Surat_model extends CI_Model
         # code...
     }
 
-    public function add_dinas($data_surat, $user)
+    public function add_dinas($data_surat, $user, $id_tugas)
     {
         $this->db->insert('surat', $data_surat);
 
         $data_tugas = array(
             'id_surat' => $this->db->insert_id(),
             'id_user' => $user,
-            'id_tugas' => 1
+            'id_tugas' => $id_tugas
         );
         $this->db->insert('surat_user', $data_tugas);
     }
@@ -45,6 +45,17 @@ class Surat_model extends CI_Model
        $this->db->where('id_surat',$id_surat);
         $row=$this->db->get('surat')->row();
         return $row->jenis_surat.'_'.$row->style;
+    }
+    public function getSuratByTugas($id_tugas)
+    {
+        # SELECT * FROM `surat_user` INNER JOIN surat ON surat.id_surat=surat_user.id_surat WHERE id_tugas=5 AND id_user=10
+        $id_user=$this->session->userdata('id');
+        $this->db->select('*');
+        $this->db->from('surat_user');
+        $this->db->join('surat','surat.id_surat=surat_user.id_surat');
+        $this->db->where('id_tugas',$id_tugas);
+        $this->db->where('id_user', $id_user);
+        return $this->db->get()->result();
     }
     
 }

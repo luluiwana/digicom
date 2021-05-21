@@ -17,12 +17,13 @@ class Surat extends CI_Controller
         }
         date_default_timezone_set('Asia/Jakarta');
     }
-    public function preview($id_surat)
+    public function preview($id_surat,$id_tugas)
     {
       $data = array(
       'title' => 'Tugas',
-
-      'id_surat'=>$id_surat
+      'id_surat'=>$id_surat,
+      'surat'=>$this->Surat_model->getSurat($id_surat),
+      'id_tugas'=>$id_tugas,
     );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_siswa');
@@ -91,14 +92,12 @@ class Surat extends CI_Controller
         'nomor_identitas' => $this->input->post('nip'),
         'jabatan' => $this->input->post('jabatan'),
       );
+            $id_tugas=$this->input->post('id');
             $id_user = $this->session->userdata('id');
-            $this->Surat_model->add_dinas($data, $id_user);
+            $this->Surat_model->add_dinas($data, $id_user,$id_tugas);
             $prevId = $this->Surat_model->getPreviewId($id_user);
             // print_r($prevId);die;
-      
-            redirect('surat/preview/'.$prevId);
-      
-         
+            redirect('surat/preview/'.$prevId.'/'.$id_tugas);
         }
         //
     }

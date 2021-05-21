@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="header bg-primary pb-1">
     <div class="container-fluid">
-        <h3 class="text-white text-center mb-4">Selamat Datang, Samsul</h3>
+        <h3 class="text-white text-center mb-4">Selamat Datang, <?=$this->session->userdata('nama');?></h3>
         <div class="header-body">
             <!-- Card stats -->
             <div class="row">
@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Kelas</h5>
-                                    <span class="h3 font-weight-bold mb-0">12 MM C</span>
+                                    <span class="h3 font-weight-bold mb-0"><?=$nama_kelas?></span>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Guru</h5>
-                                    <span class="h4 font-weight-bold mb-0">Joko Susilo, S.Pd</span>
+                                    <span class="h4 font-weight-bold mb-0"><?=$guru?></span>
                                 </div>
                               
                             </div>
@@ -40,7 +40,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Materi</h5>
-                                    <span class="h2 font-weight-bold mb-0">24</span>
+                                    <span class="h2 font-weight-bold mb-0"><?=$materi?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -59,7 +59,7 @@
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-title text-uppercase text-muted mb-0">Tugas</h5>
-                                    <span class="h2 font-weight-bold mb-0">10</span>
+                                    <span class="h2 font-weight-bold mb-0"><?=$tugas?></span>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">

@@ -2,7 +2,7 @@
 <div class="container-fluid mt-3">
     <div class="row ">
         <div class="col-md-12">
-            <a href="<?= base_url($level . '/buat_surat') ?>" class="btn btn-outline-primary btn-sm mb-4"><i
+            <a href="<?= base_url($level . '/buat_surat/'.$id_tugas) ?>" class="btn btn-outline-primary btn-sm mb-4"><i
                     class="fas fa-chevron-left mr-1"></i>Kembali</a>
             <div class="card">
                 <div class="card-header text-center  h3"><b>Surat <?= $jenis . ' (' . $style . ')' ?></b></div>
@@ -222,6 +222,7 @@
                         </div>
 
                 </div>
+                <input type="hidden" name="id" value="<?=$id_tugas?>">
                 <input type="submit" value="Simpan Surat" class="btn btn-primary text-white form-control">
                 <!-- <a href="<?= base_url($level . '/preview') ?>" class="btn btn-primary text-white form-control"><i class="	fas fa-save mr-1"></i> Simpan
                             Surat</a> -->

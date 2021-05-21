@@ -8,14 +8,14 @@ if ($this->session->userdata('level')==0) {
 <!-- Page content -->
 <div class="container-fluid mt-3">
     <?php if($level=='siswa'):?>
-    <div><a href="<?=base_url('siswa/lihat_tugas')?>" class="btn btn-sm btn-outline-primary mb-3"><i
+    <div><a href="<?=base_url('siswa/lihat_tugas/'.$id_tugas)?>" class="btn btn-sm btn-outline-primary mb-3"><i
                 class="fas fa-chevron-left mr-1"></i> Kembali ke Tugas</a></div>
     <?php else:?>
     <div><a href="<?=base_url('guru/surat')?>" class="btn btn-sm btn-outline-primary mb-3"><i
                 class="fas fa-chevron-left mr-1"></i> Kembali</a></div>
     <?php endif;?>
-    <a href="<?=base_url('surat/cetak_surat/'.$id_surat)?>" target="_blank" class="btn btn-outline-primary btn-sm mt-1"><i
-            class="fas fa-print"></i> Cetak Surat</a>
+    <a href="<?=base_url('surat/cetak_surat/'.$id_surat)?>" target="_blank"
+        class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-print"></i> Cetak Surat</a>
     <a href="<?=base_url($level.'/cetak_amplop')?>" class="btn btn-outline-primary btn-sm mt-1"><i
             class="fas fa-envelope"></i> Cetak Amplop</a>
     <a href="<?=base_url($level.'/edit_surat')?>" class="btn btn-outline-primary btn-sm mt-1"><i
@@ -39,11 +39,13 @@ if ($this->session->userdata('level')==0) {
                 </div>
 
                 <div class="modal-footer">
-                <?php if($level=='siswa'):?>
-                    <a href="<?=base_url('siswa/lihat_tugas')?>"><button type="button" class="btn btn-white px-5">Ya</button></a>
-                <?php else :?>    
-                    <a href="<?=base_url('guru/surat')?>"><button type="button" class="btn btn-white col-md-6 px-5">Ya</button></a>
-                <?php endif;?>    
+                    <?php if($level=='siswa'):?>
+                    <a href="<?=base_url('siswa/lihat_tugas')?>"><button type="button"
+                            class="btn btn-white px-5">Ya</button></a>
+                    <?php else :?>
+                    <a href="<?=base_url('guru/surat')?>"><button type="button"
+                            class="btn btn-white col-md-6 px-5">Ya</button></a>
+                    <?php endif;?>
                     <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
                 </div>
 
@@ -56,10 +58,18 @@ if ($this->session->userdata('level')==0) {
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><b>Preview </b></div>
+                <div class="card-header"><b>Preview Surat </b></div>
+                <?php foreach($surat as $row):?>
                 <div class="card-body col-md-12">
+                     
+                    <iframe id="pdf-js-viewer" src="<?=base_url('surat/cetak_surat/'.$id_surat)?>" title="webviewer" frameborder="0" style="width:100%;" height="800px"></iframe>
+                    <?php if($row->jenis_surat=="Dinas"):?>
                     
+                   
+
+                    <?php endif?>
                 </div>
+                <?php endforeach;?>
             </div>
         </div>
 

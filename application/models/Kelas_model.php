@@ -27,6 +27,13 @@ class Kelas_model extends CI_Model
         $row=$this->db->get('users')->row();
         return $row->c;
     }
+    public function countTugasByClass($id_kelas)
+    {
+        $this->db->select('count(*) as c');
+        $this->db->where('id_kelas', $id_kelas);
+        $row=$this->db->get('tugas')->row();
+        return $row->c;
+    }
     public function getKelasLimit()
     {
         $this->db->where('id_user', $this->session->userdata('id'));
@@ -71,6 +78,13 @@ class Kelas_model extends CI_Model
         $this->db->where('id_tugas',$id_tugas);
         return $this->db->get('tugas')->result();
     }
+    public function getKelasByTugas($id_tugas)
+    {   
+        $this->db->where('id_tugas',$id_tugas);
+        $row=$this->db->get('tugas')->row();
+        return $row->id_kelas;
+    }
+    
    
 }
                         

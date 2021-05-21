@@ -26,6 +26,8 @@ class Siswa extends CI_Controller
     $this->load->library('session');
     if ($this->session->userdata('level') == '1') {
       $this->load->model('Auth_model');
+      $this->load->model('Siswa_model');
+      $this->load->model('Surat_model');
     } else {
       redirect('auth/login');
     }
@@ -33,8 +35,14 @@ class Siswa extends CI_Controller
 
   public function index()
   {
+    $id_kelas=$this->session->userdata('kelas');
+
     $data = array(
-      'title' => 'Dashboard'
+      'title' => 'Dashboard',
+      'nama_kelas'=>$this->Siswa_model->getNamaKelas($id_kelas),
+      'guru'=>$this->Siswa_model->getGuru($id_kelas),
+      'materi'=>$this->Siswa_model->countMateri($id_kelas),
+      'tugas'=>$this->Siswa_model->countTugas($id_kelas),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -54,17 +62,19 @@ class Siswa extends CI_Controller
   public function materi()
   {
     $data = array(
-      'title' => 'Materi'
+      'title' => 'Materi',
+      'materi'=>$this->Siswa_model->materi(),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('siswa/materi');
     $this->load->view('template/footer');
   }
-  public function lihat_materi()
+  public function lihat_materi($id_materi)
   {
     $data = array(
-      'title' => 'Materi'
+      'title' => 'Materi',
+      'materi'=>$this->Siswa_model->getMateriById($id_materi),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -74,65 +84,73 @@ class Siswa extends CI_Controller
   public function tugas()
   {
     $data = array(
-      'title' => 'Tugas'
+      'title' => 'Tugas',
+      'tugas'=>$this->Siswa_model->tugas(),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('siswa/tugas');
     $this->load->view('template/footer');
   }
-  public function lihat_tugas()
+  public function lihat_tugas($id_tugas)
   {
     $data = array(
-      'title' => 'Tugas'
+      'title' => 'Tugas',
+      'tugas'=>$this->Siswa_model->getTugasById($id_tugas),
+      'id_tugas'=>$id_tugas,
+      'surat'=>$this->Surat_model->getSuratByTugas($id_tugas),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('siswa/lihat_tugas');
     $this->load->view('template/footer');
   }
-  public function buat_surat()
+  public function buat_surat($id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
-      'level' => 'siswa'
+      'level' => 'siswa',
+      'id_tugas'=>$id_tugas,
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/buat_surat');
     $this->load->view('template/footer');
   }
-  public function form_surat_dinas($jenis, $style)
+  public function form_surat_dinas($jenis, $style,$id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
       'jenis' => $jenis,
       'style' => $style,
-      'level' => 'siswa'
+      'level' => 'siswa',
+      'id_tugas'=>$id_tugas
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/form_surat_dinas');
     $this->load->view('template/footer');
   }
-  public function form_surat_niaga($jenis, $style)
+  public function form_surat_niaga($jenis, $style,$id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
       'jenis' => $jenis,
       'style' => $style,
-      'level' => 'siswa'
+      'level' => 'siswa',
+      'id_tugas'=>$id_tugas
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/form_surat_niaga');
     $this->load->view('template/footer');
   }
-  public function form_surat_pribadi()
+  public function form_surat_pribadi($id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
-      'level' => 'siswa'
+      'level' => 'siswa',
+      'id_tugas'=>$id_tugas,
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');

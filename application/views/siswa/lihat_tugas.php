@@ -3,29 +3,25 @@
     <a href="<?=base_url('siswa/tugas')?>" class="btn btn-sm btn-outline-primary mb-3"><i class="fas fa-chevron-left mr-1"></i> Kembali ke Daftar Tugas</a>
     <div class="row">
         <div class="col-md-12">
+            <?php foreach($tugas as $row):?>
             <div class="card">
-                <div class="card-header h4"><b>Tugas 1 - Pengantar Ilmu Administrasi</b>
+                <div class="card-header h4"><b><?=$row->judul_tugas?></b>
                    
                 </div>
                 <div class="card-body">
                     <div>
-                        <p class="small">It is a long established fact that a reader will be distracted by the readable
-                            content of a page when looking at its layout. The point of using Lorem Ipsum is that it has
-                            a more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        <p class="small"><?=$row->deskripsi?></p>
                     </div>
-                    <div class="h6 text-danger">Batas Waktu Penyelesaian: 29 Maret 2021</div>
+                    <div class="h6 text-danger">Batas Waktu Penyelesaian: <?=tgl_indo($row->date)?></div>
                 <div> <a href="" class="btn btn-sm bg-gradient-success text-white"><i class="	fas fa-upload"></i> Kumpulkan Tugas</a></div>
 
                 </div>
 
             </div>
+            <?php endforeach;?>
             <div class="card">
                 <div class="card-header"><b>Hasil Tugas</b>
-                    <a href="<?=base_url('siswa/buat_surat')?>"
+                    <a href="<?=base_url('siswa/buat_surat/'.$id_tugas)?>"
                         class="btn bg-gradient-primary text-white float-right btn-sm"><i class="fas fa-envelope-open"></i> Buat Surat</a>
                 </div>
                 <div class="card-body">
@@ -33,18 +29,17 @@
                         <tr>
                             <th>No</th>
                             <th>Jenis Surat</th>
-                            <th>Tanggal Pembuatan</th>
-                            <th>Nama Instansi</th>
                             <th>Nomor Surat</th>
+                            <th>Tanggal Surat</th>
                             <th>Opsi</th>
                         </tr>
                         <th>
+                            <?php $x=1; foreach($surat as $row):?>
                             <tr>
-                                <td>1</td>
-                                <td>Dinas</td>
-                                <td>18 Maret 2021</td>
-                                <td>PT. Alkisah Indonesia</td>
-                                <td>782/23uhu23/e</td>
+                                <td><?=$x?></td>
+                                <td><?=$row->jenis_surat?></td>
+                                <td><?=$row->nomor_surat?></td>
+                                <td><?=tgl_indo($row->tgl_surat)?></td>
                                 <td>
                                     <div class="dropdown dropright">
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
@@ -52,7 +47,7 @@
                                             Opsi
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="<?=base_url('siswa/preview')?>">Lihat Surat</a>
+                                            <a class="dropdown-item" href="<?=base_url('surat/preview/'.$row->id_surat.'/'.$id_tugas)?>">Lihat Surat</a>
                                             <a class="dropdown-item" href="<?=base_url('siswa/cetak_surat')?>">Cetak Surat</a>
                                             <a class="dropdown-item" href="<?=base_url('siswa/cetak_amplop')?>">Cetak Amplop</a>
                                             <a class="dropdown-item" href="<?=base_url('siswa/edit_surat')?>">Edit Surat</a>
@@ -62,59 +57,36 @@
                                 </td>
 
                             </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>Dinas</td>
-                                <td>18 Maret 2021</td>
-                                <td>PT. Alkisah Indonesia</td>
-                                <td>782/23uhu23/e</td>
-                                <td>
-                                    <div class="dropdown dropright">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">
-                                            Opsi
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Lihat Surat</a>
-                                            <a class="dropdown-item" href="#">Cetak Surat</a>
-                                            <a class="dropdown-item" href="#">Cetak Amplop</a>
-                                            <a class="dropdown-item" href="#">Edit Surat</a>
-                                            <a class="dropdown-item" href="#">Hapus Surat</a>
-                                        </div>
-                                    </div>
-                                </td>
-
-                            </tr>
-                             <tr>
-                                <td>1</td>
-                                <td>Dinas</td>
-                                <td>18 Maret 2021</td>
-                                <td>PT. Alkisah Indonesia</td>
-                                <td>782/23uhu23/e</td>
-                                <td>
-                                    <div class="dropdown dropright">
-                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">
-                                            Opsi
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Lihat Surat</a>
-                                            <a class="dropdown-item" href="#">Cetak Surat</a>
-                                            <a class="dropdown-item" href="#">Cetak Amplop</a>
-                                            <a class="dropdown-item" href="#">Edit Surat</a>
-                                            <a class="dropdown-item" href="#">Hapus Surat</a>
-                                        </div>
-                                    </div>
-                                </td>
-
-                            </tr>
+                            <?php $x++; endforeach;?>
                         </th>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
-
-
 </div>
+<?php
+function tgl_indo($tanggal)
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+    
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+ 
+    return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}

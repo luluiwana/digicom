@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="t">
-                        <input type="submit" value="Edit Materi" class="btn btn-primary my-4">
+                        <input type="submit" value="Simpan" class="btn btn-primary my-4">
                     </div>
                 </div>
                 </form>

@@ -18,7 +18,7 @@
                     <div class="mt-3">
                         <a href="<?=base_url('guru/download_tugas/'.$row->filename)?>" class="btn btn-outline-primary btn-sm"><i
                                 class="fas fa-print mr-1"></i> Download Lampiran Tugas</a>
-                        <a href="<?=base_url('guru/edit_tugas/'.$row->id_kelas)?>" class="btn btn-outline-primary btn-sm"><i
+                        <a href="<?=base_url('guru/edit_tugas/'.$row->id_tugas)?>" class="btn btn-outline-primary btn-sm"><i
                                 class="fas fa-edit mr-1"></i> Edit Tugas</a>
                     </div>
                 </div>
@@ -27,8 +27,8 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"><b>Hasil Tugas Siswa Kelas A</b></div>
-                <div class="card-body">
+                <div class="card-header"><b>Hasil Tugas Siswa</b></div>
+                <div class="card-body table-responsive">
                     <table class="table">
                         <thead>
                             <th>No</th>
