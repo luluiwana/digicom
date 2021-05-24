@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header"><b>Data Siswa Kelas <?=$nama_kelas?> (<?=$sekolah?>)</b></div>
                 <div class="card-body table-responsive">
-                    <table class="table" style="min-height:500px" id="siswa">
+                    <table class="table" style="" id="siswa">
                         <thead>
                             <th>No</th>
                             <th>Nomor Identitas</th>
