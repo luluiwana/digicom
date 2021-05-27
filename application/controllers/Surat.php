@@ -68,38 +68,6 @@ class Surat extends CI_Controller
         } else {
 
             $data = array(
-<<<<<<< HEAD
-                'nama_instansi' => $this->input->post('nama_instansi'),
-                'jenis_surat' => $this->input->post('jenis_surat'),
-                'style' => $this->input->post('style'),
-                'email' => $this->input->post('email'),
-                'jenis_instansi' => $this->input->post('jenis_instansi'),
-                'alamat_instansi' => $this->input->post('alamat_instansi'),
-                'instansi_tujuan' => $this->input->post('instansi_tujuan'),
-                'alamat_tujuan' => $this->input->post('alamat_tujuan'),
-                'kota_tujuan' => $this->input->post('kota_tujuan'),
-                'kota' => $this->input->post('kota'),
-                'kode_pos' => $this->input->post('kode_pos'),
-                'telp' => $this->input->post('telp'),
-                'website' => $this->input->post('website'),
-                'logo' => $newfilename,
-                'tgl_surat' => $this->input->post('tgl_surat'),
-                'tgl_buat' => date("Y-m-d"),
-                'nomor_surat' => $this->input->post('nomor'),
-                'perihal' => $this->input->post('perihal'),
-                'lampiran' => $this->input->post('lampiran'),
-                'penerima' => $this->input->post('penerima'),
-                'kota' => $this->input->post('kota'),
-                'salam_buka' => $this->input->post('salam_pembuka'),
-                'isi_surat' => $this->input->post('isi'),
-                'salam_tutup' => $this->input->post('salam_penutup'),
-                'pengirim' => $this->input->post('nama'),
-                'nomor_identitas' => $this->input->post('nip'),
-                'jabatan' => $this->input->post('jabatan'),
-            );
-
-            $id_tugas = $this->input->post('id');
-=======
         'nama_instansi' => $this->input->post('nama_instansi'),
         'jenis_surat' => $this->input->post('jenis_surat'),
         'style'=>$this->input->post('style'),
@@ -129,7 +97,6 @@ class Surat extends CI_Controller
         'jabatan' => $this->input->post('jabatan'),
       );
             $id_tugas=$this->input->post('id');
->>>>>>> 0625a4874d70b03047514b30a157ca36ade61147
             $id_user = $this->session->userdata('id');
             $this->Surat_model->add_dinas($data, $id_user, $id_tugas);
             $prevId = $this->Surat_model->getPreviewId($id_user);
@@ -137,6 +104,21 @@ class Surat extends CI_Controller
             redirect('surat/preview/' . $prevId . '/' . $id_tugas);
         }
         //
+    }
+    public function add_pribadi($id_tugas)
+    {
+        $data=array(
+            'isi_surat'=>$this->input->post('isi'),
+            'jenis_surat'=>"Pribadi",
+            'tgl_buat' => date("Y-m-d H:i"),   
+        );
+         $id_user = $this->session->userdata('id');
+            $this->Surat_model->add_dinas($data, $id_user, $id_tugas);
+            $prevId = $this->Surat_model->getPreviewId($id_user);
+            // print_r($prevId);die;
+            redirect('surat/preview/' . $prevId . '/' . $id_tugas);
+
+
     }
     public function hapus_surat($id_surat)
     {

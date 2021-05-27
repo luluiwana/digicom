@@ -89,6 +89,17 @@ $('#isi_surat_dinas').summernote({
     tabDisable: true
 
 });
+$('#isi_surat_pribadi').summernote({
+    // placeholder: 'Masukkan Isi',
+    tabsize: 4,
+    height: 600,
+    tabDisable: true,
+
+});
+$("#isi_surat_pribadi").on("summernote.enter", function(we, e) {
+     $(this).summernote("pasteHTML", "<br><br>");
+     e.preventDefault();
+});
 </script>
 <script>
 $(document).ready(function() {
