@@ -106,7 +106,7 @@ $(document).ready(function() {
     $('#kelas').DataTable({
         "paging": false,
         "info": false
-    });
+    }); 
      $('#siswa').DataTable({
         "paging": false,
         "info": false
