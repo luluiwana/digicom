@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <?php foreach($tugas as $row):?>
+            <?php $dateline=$row->date?>
             <div class="card">
                 <div class="card-header h4"><b><?=$row->judul_tugas?></b>
                    
@@ -13,9 +14,7 @@
                         <p class="small"><?=$row->deskripsi?></p>
                     </div>
                     <div class="h6 text-danger">Batas Waktu Penyelesaian: <?=tgl_indo($row->date)?></div>
-                <div> <a href="" class="btn btn-sm bg-gradient-success text-white"><i class="	fas fa-upload"></i> Kumpulkan Tugas</a></div>
-
-                </div>
+              
 
             </div>
             <?php endforeach;?>
@@ -31,15 +30,24 @@
                             <th>Jenis Surat</th>
                             <th>Nomor Surat</th>
                             <th>Tanggal Surat</th>
+                            <th>Waktu Selesai</th>
                             <th>Opsi</th>
                         </tr>
                         <th>
                             <?php $x=1; foreach($surat as $row):?>
                             <tr>
                                 <td><?=$x?></td>
-                                <td><?=$row->jenis_surat?></td>
+                                <td><?=$row->jenis_surat?> (<?=$row->style?>)</td>
                                 <td><?=$row->nomor_surat?></td>
                                 <td><?=tgl_indo($row->tgl_surat)?></td>
+                                <?php if($row->tgl_buat>$dateline){
+                                    $status='<div class="text-danger">Terlambat</div>';
+                                }else {
+                                  $status='<div class="text-success">Tepat Waktu</div>';
+
+                                }
+                                ?>
+                                <td>  <?=$status.tgl_indo2($row->tgl_buat)?></td>
                                 <td>
                                     <div class="dropdown dropright">
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
@@ -89,4 +97,11 @@ function tgl_indo($tanggal)
     // variabel pecahkan 2 = tahun
  
     return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+}
+
+function tgl_indo2($tanggal)
+{
+    $orgDate = $tanggal;  
+    $newDate = date("d-m-Y (H:i)", strtotime($orgDate));  
+    return $newDate;
 }

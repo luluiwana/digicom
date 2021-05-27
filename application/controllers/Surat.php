@@ -79,7 +79,7 @@ class Surat extends CI_Controller
         'website' => $this->input->post('website'),
         'logo' => $newfilename,
         'tgl_surat' => $this->input->post('tgl_surat'),
-        'tgl_buat' => date("Y-m-d"),
+        'tgl_buat' => date("Y-m-d H:i"),
         'nomor_surat' => $this->input->post('nomor'),
         'perihal' => $this->input->post('perihal'),
         'lampiran' => $this->input->post('lampiran'),
