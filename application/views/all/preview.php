@@ -5,6 +5,12 @@ if ($this->session->userdata('level') == 0) {
     $level = 'siswa';
 }
 ?>
+
+<?php foreach ($surat as $row) {
+    $jenis_surat = $row->jenis_surat;
+    $id = $row->id_surat;
+}
+?>
 <!-- Page content -->
 <div class="container-fluid mt-3">
     <?php if ($level == 'siswa') : ?>
@@ -13,7 +19,7 @@ if ($this->session->userdata('level') == 0) {
         <div><a href="<?= base_url('guru/surat') ?>" class="btn btn-sm btn-outline-primary mb-3"><i class="fas fa-chevron-left mr-1"></i> Kembali</a></div>
     <?php endif; ?>
     <a href="<?= base_url('surat/cetak_surat/' . $id_surat) ?>" target="_blank" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-print"></i> Cetak Surat</a>
-    <a href="<?= base_url($level . '/cetak_amplop') ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-envelope"></i> Cetak Amplop</a>
+    <a href="<?= base_url('surat/cetak_amplop/' . $jenis_surat . '/' . $id) ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-envelope"></i> Cetak Amplop</a>
     <a href="<?= base_url($level . '/edit_surat') ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-edit"></i> Edit Surat</a>
     <a href="#" class="btn btn-outline-primary btn-sm mt-1" data-toggle="modal" data-target="#modal-notification"><i class="fas fa-trash"></i> Hapus Surat</a>
 
@@ -45,22 +51,40 @@ if ($this->session->userdata('level') == 0) {
 
 
 
+
+
     </div>
     <div class="row mt-3">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><b>Preview Surat </b></div>
-                <?php foreach ($surat as $row) : ?>
-                    <div class="card-body col-md-12">
 
-                        <iframe id="pdf-js-viewer" src="<?= base_url('surat/cetak_surat/' . $id_surat) ?>" title="webviewer" frameborder="0" style="width:100%;" height="800px"></iframe>
-                        <?php if ($row->jenis_surat == "Dinas") : ?>
+                <div class="card-body col-md-12">
+                    <iframe id="pdf-js-viewer" src="<?= base_url('surat/cetak_surat/' . $id_surat) ?>" title="webviewer" frameborder="0" style="width:100%;" height="800px"></iframe>
 
+                </div>
+                <?php if ($jenis_surat == "Dinas") : ?>
 
+                <?php endif ?>
 
-                        <?php endif ?>
-                    </div>
-                <?php endforeach; ?>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"><b>Preview Surat </b></div>
+
+                <div class="card-body col-md-12">
+                    <iframe id="pdf-js-viewer" src="<?= base_url('surat/cetak_surat/' . $id_surat) ?>" title="webviewer" frameborder="0" style="width:100%;" height="800px"></iframe>
+
+                </div>
+                <?php if ($jenis_surat == "Dinas") : ?>
+
+                <?php endif ?>
+
             </div>
         </div>
 

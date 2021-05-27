@@ -45,8 +45,6 @@ class Surat extends CI_Controller
         $this->pdf->load_view('all/' . $data['jenis'], $data);
     }
 
-
-
     public function add_surat()
     {
         $temp = explode(".", $_FILES["logo"]["name"]);
@@ -68,7 +66,6 @@ class Surat extends CI_Controller
         } else {
 
             $data = array(
-<<<<<<< HEAD
                 'nama_instansi' => $this->input->post('nama_instansi'),
                 'jenis_surat' => $this->input->post('jenis_surat'),
                 'style' => $this->input->post('style'),
@@ -84,7 +81,7 @@ class Surat extends CI_Controller
                 'website' => $this->input->post('website'),
                 'logo' => $newfilename,
                 'tgl_surat' => $this->input->post('tgl_surat'),
-                'tgl_buat' => date("Y-m-d"),
+                'tgl_buat' => date("Y-m-d H:i"),
                 'nomor_surat' => $this->input->post('nomor'),
                 'perihal' => $this->input->post('perihal'),
                 'lampiran' => $this->input->post('lampiran'),
@@ -97,39 +94,7 @@ class Surat extends CI_Controller
                 'nomor_identitas' => $this->input->post('nip'),
                 'jabatan' => $this->input->post('jabatan'),
             );
-
             $id_tugas = $this->input->post('id');
-=======
-        'nama_instansi' => $this->input->post('nama_instansi'),
-        'jenis_surat' => $this->input->post('jenis_surat'),
-        'style'=>$this->input->post('style'),
-        'email' => $this->input->post('email'),
-        'jenis_instansi' => $this->input->post('jenis_instansi'),
-        'alamat_instansi' => $this->input->post('alamat_instansi'),
-        'instansi_tujuan' => $this->input->post('instansi_tujuan'),
-        'alamat_tujuan' => $this->input->post('alamat_tujuan'),
-        'kota_tujuan' => $this->input->post('kota_tujuan'),
-        'kota' => $this->input->post('kota'),
-        'kode_pos' => $this->input->post('kode_pos'),
-        'telp' => $this->input->post('telp'),
-        'website' => $this->input->post('website'),
-        'logo' => $newfilename,
-        'tgl_surat' => $this->input->post('tgl_surat'),
-        'tgl_buat' => date("Y-m-d H:i"),
-        'nomor_surat' => $this->input->post('nomor'),
-        'perihal' => $this->input->post('perihal'),
-        'lampiran' => $this->input->post('lampiran'),
-        'penerima' => $this->input->post('penerima'),
-        'kota' => $this->input->post('kota'),
-        'salam_buka' => $this->input->post('salam_pembuka'),
-        'isi_surat' => $this->input->post('isi'),
-        'salam_tutup' => $this->input->post('salam_penutup'),
-        'pengirim' => $this->input->post('nama'),
-        'nomor_identitas' => $this->input->post('nip'),
-        'jabatan' => $this->input->post('jabatan'),
-      );
-            $id_tugas=$this->input->post('id');
->>>>>>> 0625a4874d70b03047514b30a157ca36ade61147
             $id_user = $this->session->userdata('id');
             $this->Surat_model->add_dinas($data, $id_user, $id_tugas);
             $prevId = $this->Surat_model->getPreviewId($id_user);
@@ -145,6 +110,35 @@ class Surat extends CI_Controller
     public function edit_surat($id_surat)
     {
         # code...
+    }
+
+    public function cetak_amplop($jenis, $id_surat)
+    {
+        if ($jenis == 'Dinas') {
+            $data = array(
+                'surat' => $this->Surat_model->getSurat($id_surat),
+                'jenis' => $this->Surat_model->getJenisSurat($id_surat)
+            );
+
+            // print_r($data);die;
+            $this->load->library('pdf');
+            $this->pdf->setPaper('B5', 'potrait');
+            $this->pdf->filename = "Amplop Surat Dinas" . $id_surat . ".pdf";
+            // $this->load->view('all/' . $data['jenis'], $data);
+            $this->pdf->load_view('all/amplop_dinas', $data);
+        } elseif ($jenis == 'Niaga') {
+            $data = array(
+                'surat' => $this->Surat_model->getSurat($id_surat),
+                'jenis' => $this->Surat_model->getJenisSurat($id_surat)
+            );
+
+            // print_r($data);die;
+            $this->load->library('pdf');
+            $this->pdf->setPaper('B5', 'potrait');
+            $this->pdf->filename = "Amplop Surat Niaga" . $id_surat . ".pdf";
+            // $this->load->view('all/' . $data['jenis'], $data);
+            $this->pdf->load_view('all/amplop_niaga', $data);
+        }
     }
 }
 
