@@ -17,14 +17,14 @@ class Surat extends CI_Controller
         }
         date_default_timezone_set('Asia/Jakarta');
     }
-    public function preview($id_surat,$id_tugas)
+    public function preview($id_surat, $id_tugas)
     {
-      $data = array(
-      'title' => 'Tugas',
-      'id_surat'=>$id_surat,
-      'surat'=>$this->Surat_model->getSurat($id_surat),
-      'id_tugas'=>$id_tugas,
-    );
+        $data = array(
+            'title' => 'Tugas',
+            'id_surat' => $id_surat,
+            'surat' => $this->Surat_model->getSurat($id_surat),
+            'id_tugas' => $id_tugas,
+        );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar_siswa');
         $this->load->view('all/preview');
@@ -32,18 +32,21 @@ class Surat extends CI_Controller
     }
     public function cetak_surat($id_surat)
     {
-      $data = array(
-      'surat' => $this->Surat_model->getSurat($id_surat),
-      'jenis' => $this->Surat_model->getJenisSurat($id_surat)
-    );
+        $data = array(
+            'surat' => $this->Surat_model->getSurat($id_surat),
+            'jenis' => $this->Surat_model->getJenisSurat($id_surat)
+        );
 
-      // print_r($data);die;
-      $this->load->library('pdf');
-      $this->pdf->setPaper('A4', 'potrait');
-      $this->pdf->filename = "Surat ".$data['jenis']." ".$id_surat.".pdf";
-      $this->load->view('all/'.$data['jenis'],$data);
-      $this->pdf->load_view('all/'.$data['jenis'],$data);
+        // print_r($data);die;
+        $this->load->library('pdf');
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Surat " . $data['jenis'] . " " . $id_surat . ".pdf";
+        // $this->load->view('all/' . $data['jenis'], $data);
+        $this->pdf->load_view('all/' . $data['jenis'], $data);
     }
+
+
+
     public function add_surat()
     {
         $temp = explode(".", $_FILES["logo"]["name"]);
@@ -63,41 +66,43 @@ class Surat extends CI_Controller
             $this->session->set_flashdata('error_msg', $this->upload->display_errors());
             echo $this->upload->display_errors();
         } else {
+
             $data = array(
-        'nama_instansi' => $this->input->post('nama_instansi'),
-        'jenis_surat' => $this->input->post('jenis_surat'),
-        'style'=>$this->input->post('style'),
-        'email' => $this->input->post('email'),
-        'jenis_instansi' => $this->input->post('jenis_instansi'),
-        'alamat_instansi' => $this->input->post('alamat_instansi'),
-        'instansi_tujuan' => $this->input->post('instansi_tujuan'),
-        'alamat_tujuan' => $this->input->post('alamat_tujuan'),
-        'kota_tujuan' => $this->input->post('kota_tujuan'),
-        'kota' => $this->input->post('kota'),
-        'kode_pos' => $this->input->post('kode_pos'),
-        'telp' => $this->input->post('telp'),
-        'website' => $this->input->post('website'),
-        'logo' => $newfilename,
-        'tgl_surat' => $this->input->post('tgl_surat'),
-        'tgl_buat' => date("Y-m-d"),
-        'nomor_surat' => $this->input->post('nomor'),
-        'perihal' => $this->input->post('perihal'),
-        'lampiran' => $this->input->post('lampiran'),
-        'penerima' => $this->input->post('penerima'),
-        'kota' => $this->input->post('kota'),
-        'salam_buka' => $this->input->post('salam_pembuka'),
-        'isi_surat' => $this->input->post('isi'),
-        'salam_tutup' => $this->input->post('salam_penutup'),
-        'pengirim' => $this->input->post('nama'),
-        'nomor_identitas' => $this->input->post('nip'),
-        'jabatan' => $this->input->post('jabatan'),
-      );
-            $id_tugas=$this->input->post('id');
+                'nama_instansi' => $this->input->post('nama_instansi'),
+                'jenis_surat' => $this->input->post('jenis_surat'),
+                'style' => $this->input->post('style'),
+                'email' => $this->input->post('email'),
+                'jenis_instansi' => $this->input->post('jenis_instansi'),
+                'alamat_instansi' => $this->input->post('alamat_instansi'),
+                'instansi_tujuan' => $this->input->post('instansi_tujuan'),
+                'alamat_tujuan' => $this->input->post('alamat_tujuan'),
+                'kota_tujuan' => $this->input->post('kota_tujuan'),
+                'kota' => $this->input->post('kota'),
+                'kode_pos' => $this->input->post('kode_pos'),
+                'telp' => $this->input->post('telp'),
+                'website' => $this->input->post('website'),
+                'logo' => $newfilename,
+                'tgl_surat' => $this->input->post('tgl_surat'),
+                'tgl_buat' => date("Y-m-d"),
+                'nomor_surat' => $this->input->post('nomor'),
+                'perihal' => $this->input->post('perihal'),
+                'lampiran' => $this->input->post('lampiran'),
+                'penerima' => $this->input->post('penerima'),
+                'kota' => $this->input->post('kota'),
+                'salam_buka' => $this->input->post('salam_pembuka'),
+                'isi_surat' => $this->input->post('isi'),
+                'salam_tutup' => $this->input->post('salam_penutup'),
+                'pengirim' => $this->input->post('nama'),
+                'nomor_identitas' => $this->input->post('nip'),
+                'jabatan' => $this->input->post('jabatan'),
+            );
+
+            $id_tugas = $this->input->post('id');
             $id_user = $this->session->userdata('id');
-            $this->Surat_model->add_dinas($data, $id_user,$id_tugas);
+            $this->Surat_model->add_dinas($data, $id_user, $id_tugas);
             $prevId = $this->Surat_model->getPreviewId($id_user);
             // print_r($prevId);die;
-            redirect('surat/preview/'.$prevId.'/'.$id_tugas);
+            redirect('surat/preview/' . $prevId . '/' . $id_tugas);
         }
         //
     }
@@ -109,8 +114,6 @@ class Surat extends CI_Controller
     {
         # code...
     }
-    
- 
 }
 
 

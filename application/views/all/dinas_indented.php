@@ -37,112 +37,182 @@
         margin: 8px;
         margin-left: 0px;
         padding-left: 0px;
+    }
+
+    ul {
+        margin-block-start: 0.5px;
+        margin-block-end: 0px;
+        padding-inline-start: 46px;
+    }
+
+    ul>li {
+        list-style-position: inside;
+        list-style-type: none;
+        line-height: 1.5em;
+        padding-left: 15px;
+
 
     }
+
+    ol {
+        margin-block-start: 0.5px;
+        margin-block-end: 0px;
+    }
+
+    ol>li {
+        list-style-position: inside;
+        line-height: 150%;
+        padding-inline-start: 76px;
+        padding-left: 20px;
+        /* padding-left: 10px; */
+    }
 </style>
-<?php $base = base_url("") ;
-foreach ($surat as $row ) :
+<?php $base = base_url("");
+foreach ($surat as $row) :
 ?>
-<table>
-    <tr>
-        <td width="145px"> <img width="100px" src="<?= "file/logo_surat/" . $row->logo ?>" alt=""></td>
-        <td>
-            <table>
-                <tr>
-                    <td class="text-center">
-                        <h3 style="margin:0px">
-                            <?= $row->jenis_instansi ?>
-                        </h3>
-                    </td>
+    <table>
+        <tr>
+            <td width="145px"> <img width="100px" src="<?= "file/logo_surat/" . $row->logo ?>" alt=""></td>
+            <td>
+                <table>
+                    <tr>
+                        <td class="text-center">
+                            <h3 style="margin:0px">
+                                <?= $row->jenis_instansi ?>
+                            </h3>
+                        </td>
 
-                </tr>
-                <tr>
-                    <td class="text-center bold">
-                        <h2 style="margin:0px">
-                            <?= $row->nama_instansi ?></h2>
-                    </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center bold">
+                            <h2 style="margin:0px">
+                                <?= $row->nama_instansi ?></h2>
+                        </td>
 
-                </tr>
-                <tr>
-                    <td class=" text-center "><?= $row->alamat_instansi ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-center small"> Telp : <?= $row->telp ?> | Email : <?= $row->email ?> </td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td class=" text-center "><?= $row->alamat_instansi ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center small"> Telp : <?= $row->telp ?> | Email : <?= $row->email ?> </td>
+                    </tr>
 
-            </table>
-        </td>
-    </tr>
-</table>
+                </table>
+            </td>
+        </tr>
+    </table>
 
-<hr style="border: 2px solid black;">
-<table style="width:100%;padding-top:10px">
-    <tr>
-        <td>Nomor &nbsp;&nbsp;&nbsp;&nbsp;: <?= $row->nomor_surat ?></td>
-        <td style="text-align: right;padding-right:100px">Tanggal : <?= $row->tgl_surat ?></td>
+    <hr style="border: 2px solid black;">
+    <table style="width:100%;padding-top:10px">
+        <tr>
+            <td>Nomor &nbsp;&nbsp;&nbsp;&nbsp;: <?= $row->nomor_surat ?></td>
+            <td style="text-align: right;padding-right:100px">Tanggal : <?= tgl($row->tgl_surat) ?></td>
 
-    </tr>
-    <tr>
-        <td>Lampiran : <?= $row->lampiran ?></td>
-    </tr>
-    <tr>
-        <td>Perihal &nbsp;&nbsp;&nbsp; : <?= $row->perihal ?></td>
-    </tr>
-</table>
+        </tr>
+        <tr>
+            <td>Lampiran : <?= $row->lampiran ?></td>
+        </tr>
+        <tr>
+            <td>Perihal &nbsp;&nbsp;&nbsp; : <?= $row->perihal ?></td>
+        </tr>
+    </table>
 
 
-<table style="width:100%;padding-top:30px">
+    <table style="width:100%;padding-top:30px">
 
-    <tr>
-        <td>
-            <?= $row->penerima ?>
-        </td>
-    </tr>
-    <tr>
-        <td style="padding-left:30px;">
-            <?= $row->instansi_tujuan ?>
-        </td>
-    </tr>
-    <tr>
-        <td style="padding-left:60px;">
-            <?= $row->kota_tujuan ?>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <?= $row->penerima ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:30px;">
+                <?= $row->instansi_tujuan ?>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:60px;">
+                <?= $row->kota_tujuan ?>
+            </td>
+        </tr>
 
-    <tr>
-        <td style="padding-top :30px"><?= $row->salam_buka ?></td>
-    </tr>
-</table>
+        <tr>
+            <td style="padding-top :30px;line-height:1.5em;"><?= $row->salam_buka ?></td>
+        </tr>
+    </table>
 
-<div style="margin-top:10px;margin-left:0px;margin-right:0px;">
-    <?= $row->isi_surat ?>
-</div>
+    <?php
+    $find = "<li>";
+    $replace = "<li'> ";
+    $str = str_replace($find, $replace, $row->isi_surat);
 
-<!-- <table style="margin-top:20px">
+    $find_p = '<p>';
+    $replace_p = '<p><span>';
+    $str_p = str_replace($find_p, $replace_p, $str);
+
+    $find_d = '</p>';
+    $replace_d = '</span></p>';
+    $str_fix = str_replace($find_d, $replace_d, $str_p);
+
+    ?>
+
+    <div style="margin-right:0px;">
+        <?= $str_fix ?>
+    </div>
+
+    <!-- <table style="margin-top:20px">
     <tr>
         <td><?= $row->salam_tutup ?></td>
     </tr>
 </table> -->
 
-<table style="width:100%;margin-top:50px">
+    <table style="width:100%;margin-top:50px">
 
-    <tr>
-        <td style="text-align: left;padding-left:520px"><?= $row->salam_tutup ?></td>
-    </tr>
-    <tr>
-        <td style="text-align: left;padding-left:520px">
-            <?= $row->jabatan ?> </td>
-    </tr>
-    <tr>
-        <td style="text-align: left;padding-left:520px;padding-top:80px">
-            <?= $row->pengirim ?> </td>
-    </tr>
-    <tr>
-        <td style="text-align: left;padding-left:520px">
-             <?= $row->nomor_identitas ?> </td>
-    </tr>
+        <tr>
+            <td style="text-align: left;padding-left:520px"><?= $row->salam_tutup ?></td>
+        </tr>
+        <tr>
+            <td style="text-align: left;padding-left:520px">
+                <?= $row->jabatan ?> </td>
+        </tr>
+        <tr>
+            <td style="text-align: left;padding-left:520px;padding-top:80px">
+                <?= $row->pengirim ?> </td>
+        </tr>
+        <tr>
+            <td style="text-align: left;padding-left:520px">
+                <?= $row->nomor_identitas ?> </td>
+        </tr>
 
-</table>
-<?php endforeach;?>
+    </table>
+<?php endforeach; ?>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> -->
+<?php
+function tgl($tanggal)
+
+
+
+{
+    $bulan = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan = explode('-', $tanggal);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+}
