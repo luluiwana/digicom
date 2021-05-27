@@ -25,7 +25,21 @@ class Surat_model extends CI_Model
             'id_user' => $user,
             'id_tugas' => $id_tugas
         );
+        
         $this->db->insert('surat_user', $data_tugas);
+        #SELECT * FROM tugas_siswa WHERE id_tugas=6 AND id_user=11
+        $nilai_siswa = array(
+            'nilai'=>0,
+            'id_user' => $user,
+            'id_tugas' => $id_tugas
+        );
+        $this->db->select('count(*) as c');
+        $this->db->where('id_tugas',$id_tugas);
+        $this->db->where('id_user',$user);
+        $row=$this->db->get('tugas_siswa')->row();
+        if($row->c==0){
+            $this->db->insert('tugas_siswa', $nilai_siswa);
+        }
     }
     public function getPreviewId($id_user)  
     {

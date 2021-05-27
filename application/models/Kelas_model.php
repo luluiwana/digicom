@@ -84,7 +84,50 @@ class Kelas_model extends CI_Model
         $row=$this->db->get('tugas')->row();
         return $row->id_kelas;
     }
-    
+    public function getNilaiByTugas($id_tugas)
+    {
+        // SELECT * FROM users INNER JOIN tugas_siswa WHERE users.id_user=tugas_siswa.id_user AND id_tugas=6
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('tugas_siswa','users.id_user=tugas_siswa.id_user');
+        $this->db->where('id_tugas',$id_tugas);
+        return $this->db->get()->result();
+    }
+    public function hasil_tugas($id_tugas,$id_user)
+    {
+        # SELECT * FROM users INNER JOIN kelas ON users.kelas=kelas.id_kelas INNER JOIN tugas_siswa ON users.id_user=tugas_siswa.id_user WHERE tugas_siswa.id_user=10 AND id_tugas=6
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('kelas', 'users.kelas=kelas.id_kelas');
+        $this->db->join('tugas_siswa','users.id_user=tugas_siswa.id_user');
+        $this->db->where('tugas_siswa.id_user',$id_user);
+        $this->db->where('tugas_siswa.id_tugas',$id_tugas);
+        return $this->db->get()->result();
+    }
+    public function getSuratByTugas($id_tugas,$id_user)
+    {
+        # SELECT * FROM `surat_user` INNER JOIN surat ON surat.id_surat=surat_user.id_surat WHERE id_tugas=5 AND id_user=10
+        $this->db->select('*');
+        $this->db->from('surat_user');
+        $this->db->join('surat','surat.id_surat=surat_user.id_surat');
+        $this->db->where('id_tugas',$id_tugas);
+        $this->db->where('id_user', $id_user);
+        return $this->db->get()->result();
+    }
+    public function getDateById($id_tugas)
+    {
+        $this->db->where('id_tugas',$id_tugas);
+        $row=$this->db->get('tugas')->row();
+        return $row->date;
+    }
+    public function updateNilai($data,$id_tugas,$id_user)
+    {
+        
+        $this->db->where('id_tugas',$id_tugas);
+        $this->db->where('id_user',$id_user);
+        $this->db->update('tugas_siswa', $data);
+        
+    }
    
 }
                         
