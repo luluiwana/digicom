@@ -365,7 +365,7 @@ class Guru extends CI_Controller
       $this->load->library('pdf');
       $this->pdf->setPaper('A4', 'potrait');
       $this->pdf->filename = "Surat ".$data['jenis']." ".$id_surat.".pdf";
-      $this->load->view('all/'.$data['jenis'],$data);
+    //   $this->load->view('all/'.$data['jenis'],$data);
       $this->pdf->load_view('all/'.$data['jenis'],$data);
     }
 

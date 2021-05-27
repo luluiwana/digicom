@@ -103,6 +103,19 @@ class Surat extends CI_Controller
         }
         //
     }
+    public function add_pribadi($id_tugas)
+    {
+        $data = array(
+            'isi_surat' => $this->input->post('isi'),
+            'jenis_surat' => "Pribadi",
+            'tgl_buat' => date("Y-m-d H:i"),
+        );
+        $id_user = $this->session->userdata('id');
+        $this->Surat_model->add_dinas($data, $id_user, $id_tugas);
+        $prevId = $this->Surat_model->getPreviewId($id_user);
+        // print_r($prevId);die;
+        redirect('surat/preview/' . $prevId . '/' . $id_tugas);
+    }
     public function hapus_surat($id_surat)
     {
         # code...
