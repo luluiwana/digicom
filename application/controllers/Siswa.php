@@ -35,14 +35,14 @@ class Siswa extends CI_Controller
 
   public function index()
   {
-    $id_kelas=$this->session->userdata('kelas');
+    $id_kelas = $this->session->userdata('kelas');
 
     $data = array(
       'title' => 'Dashboard',
-      'nama_kelas'=>$this->Siswa_model->getNamaKelas($id_kelas),
-      'guru'=>$this->Siswa_model->getGuru($id_kelas),
-      'materi'=>$this->Siswa_model->countMateri($id_kelas),
-      'tugas'=>$this->Siswa_model->countTugas($id_kelas),
+      'nama_kelas' => $this->Siswa_model->getNamaKelas($id_kelas),
+      'guru' => $this->Siswa_model->getGuru($id_kelas),
+      'materi' => $this->Siswa_model->countMateri($id_kelas),
+      'tugas' => $this->Siswa_model->countTugas($id_kelas),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -63,7 +63,7 @@ class Siswa extends CI_Controller
   {
     $data = array(
       'title' => 'Materi',
-      'materi'=>$this->Siswa_model->materi(),
+      'materi' => $this->Siswa_model->materi(),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -74,7 +74,7 @@ class Siswa extends CI_Controller
   {
     $data = array(
       'title' => 'Materi',
-      'materi'=>$this->Siswa_model->getMateriById($id_materi),
+      'materi' => $this->Siswa_model->getMateriById($id_materi),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -85,7 +85,7 @@ class Siswa extends CI_Controller
   {
     $data = array(
       'title' => 'Tugas',
-      'tugas'=>$this->Siswa_model->tugas(),
+      'tugas' => $this->Siswa_model->tugas(),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -96,9 +96,9 @@ class Siswa extends CI_Controller
   {
     $data = array(
       'title' => 'Tugas',
-      'tugas'=>$this->Siswa_model->getTugasById($id_tugas),
-      'id_tugas'=>$id_tugas,
-      'surat'=>$this->Surat_model->getSuratByTugas($id_tugas),
+      'tugas' => $this->Siswa_model->getTugasById($id_tugas),
+      'id_tugas' => $id_tugas,
+      'surat' => $this->Surat_model->getSuratByTugas($id_tugas),
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -110,24 +110,24 @@ class Siswa extends CI_Controller
     $data = array(
       'title' => 'Tugas',
       'level' => 'siswa',
-      'id_tugas'=>$id_tugas,
+      'id_tugas' => $id_tugas,
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/buat_surat');
     $this->load->view('template/footer');
   }
-  public function form_surat_dinas($jenis, $style,$id_tugas)
+  public function form_surat_dinas($jenis, $style, $id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
       'jenis' => $jenis,
       'style' => $style,
       'level' => 'siswa',
-      'id_tugas'=>$id_tugas
+      'id_tugas' => $id_tugas
     );
 
-     
+
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/form_surat_dinas');
@@ -135,25 +135,25 @@ class Siswa extends CI_Controller
   }
   public function edit_surat_dinas($id_surat)
   {
-    $data=array(
-      'title'=>'Tugas',
-      'surat'=>$this->Surat_model->getSurat($id_surat),
-      'id_tugas'=>$this->Surat_model->getTugasBySurat($id_surat)
+    $data = array(
+      'title' => 'Tugas',
+      'surat' => $this->Surat_model->getSurat($id_surat),
+      'id_tugas' => $this->Surat_model->getTugasBySurat($id_surat)
     );
-  
+    $surat = $this->Surat_model->getSurat($id_surat);
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
-    $this->load->view('all/form_edit_dinas');
+    $this->load->view('all/form_edit_dinas', $surat);
     $this->load->view('template/footer');
   }
-  public function form_surat_niaga($jenis, $style,$id_tugas)
+  public function form_surat_niaga($jenis, $style, $id_tugas)
   {
     $data = array(
       'title' => 'Tugas',
       'jenis' => $jenis,
       'style' => $style,
       'level' => 'siswa',
-      'id_tugas'=>$id_tugas
+      'id_tugas' => $id_tugas
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -161,19 +161,18 @@ class Siswa extends CI_Controller
     $this->load->view('template/footer');
   }
 
-  public function edit_surat_niaga($jenis, $style,$id_tugas)
+  public function edit_surat_niaga($id_surat)
   {
     $data = array(
       'title' => 'Tugas',
-      'jenis' => $jenis,
-      'style' => $style,
-      'level' => 'siswa',
-      'id_tugas'=>$id_tugas
+      'surat' => $this->Surat_model->getSurat($id_surat),
+      'id_tugas' => $this->Surat_model->getTugasBySurat($id_surat)
     );
+
     $surat = $this->Surat_model->getSurat($id_surat);
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
-    $this->load->view('all/form_edit_niaga',$surat);
+    $this->load->view('all/form_edit_niaga', $surat);
     $this->load->view('template/footer');
   }
 
@@ -182,7 +181,7 @@ class Siswa extends CI_Controller
     $data = array(
       'title' => 'Tugas',
       'level' => 'siswa',
-      'id_tugas'=>$id_tugas,
+      'id_tugas' => $id_tugas,
     );
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
@@ -190,6 +189,20 @@ class Siswa extends CI_Controller
     $this->load->view('template/footer');
   }
 
+  public function edit_surat_pribadi($id_surat)
+  {
+    $data = array(
+      'title' => 'Tugas',
+      'surat' => $this->Surat_model->getSurat($id_surat),
+      'id_tugas' => $this->Surat_model->getTugasBySurat($id_surat)
+    );
+
+    $surat = $this->Surat_model->getSurat($id_surat);
+    $this->load->view('template/header', $data);
+    $this->load->view('template/sidebar_siswa');
+    $this->load->view('all/form_edit_pribadi', $surat);
+    $this->load->view('template/footer');
+  }
   public function preview()
   {
     $data = array(
