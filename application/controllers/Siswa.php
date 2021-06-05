@@ -126,9 +126,24 @@ class Siswa extends CI_Controller
       'level' => 'siswa',
       'id_tugas'=>$id_tugas
     );
+
+     
     $this->load->view('template/header', $data);
     $this->load->view('template/sidebar_siswa');
     $this->load->view('all/form_surat_dinas');
+    $this->load->view('template/footer');
+  }
+  public function edit_surat_dinas($id_surat)
+  {
+    $data=array(
+      'title'=>'Tugas',
+      'surat'=>$this->Surat_model->getSurat($id_surat),
+      'id_tugas'=>$this->Surat_model->getTugasBySurat($id_surat)
+    );
+  
+    $this->load->view('template/header', $data);
+    $this->load->view('template/sidebar_siswa');
+    $this->load->view('all/form_edit_dinas');
     $this->load->view('template/footer');
   }
   public function form_surat_niaga($jenis, $style,$id_tugas)
@@ -145,6 +160,23 @@ class Siswa extends CI_Controller
     $this->load->view('all/form_surat_niaga');
     $this->load->view('template/footer');
   }
+
+  public function edit_surat_niaga($jenis, $style,$id_tugas)
+  {
+    $data = array(
+      'title' => 'Tugas',
+      'jenis' => $jenis,
+      'style' => $style,
+      'level' => 'siswa',
+      'id_tugas'=>$id_tugas
+    );
+    $surat = $this->Surat_model->getSurat($id_surat);
+    $this->load->view('template/header', $data);
+    $this->load->view('template/sidebar_siswa');
+    $this->load->view('all/form_edit_niaga',$surat);
+    $this->load->view('template/footer');
+  }
+
   public function form_surat_pribadi($id_tugas)
   {
     $data = array(

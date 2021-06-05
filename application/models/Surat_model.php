@@ -54,6 +54,7 @@ class Surat_model extends CI_Model
     {   $this->db->where('id_surat',$id_surat);
         return $this->db->get('surat')->result();
     }
+
     public function getJenisSurat($id_surat)
     {
        $this->db->where('id_surat',$id_surat);
@@ -70,6 +71,20 @@ class Surat_model extends CI_Model
         $this->db->where('id_tugas',$id_tugas);
         $this->db->where('id_user', $id_user);
         return $this->db->get()->result();
+    }
+    public function delete_surat($id)
+    {  $this->db->where('id_surat',$id);
+        $this->db->delete('surat');
+    }
+     public function delete_surat_user($id)
+    {  $this->db->where('id_surat',$id);
+        $this->db->delete('surat_user');
+    }
+      public function getTugasBySurat($id_surat)
+    {
+        $this->db->where('id_surat',$id_surat);
+        $row = $this->db->get('surat_user')->row();
+        return $row->id_tugas;
     }
     
 }

@@ -80,9 +80,12 @@
                             <?php $x=1; foreach($surat as $row):?>
                             <tr>
                                 <td><?=$x?></td>
-                                <td><?=$row->jenis_surat?> (<?=$row->style?>)</td>
+                                <td><?=$row->jenis_surat?> <?=$row->style?></td>
                                 <td><?=$row->nomor_surat?></td>
-                                <td><?=tgl_indo($row->tgl_surat)?></td>
+                                <td> 
+                                    <?php if ($row->jenis_surat!="Pribadi") {
+                                        echo tgl_indo($row->tgl_surat);
+                                    }?></td>
                                 <?php if($row->tgl_buat>$dateline){
                                     $status='<div class="text-danger">Terlambat</div>';
                                 }else {

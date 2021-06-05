@@ -21,7 +21,7 @@ if ($this->session->userdata('level') == 0) {
     <a href="<?= base_url('surat/cetak_surat/' . $id_surat) ?>" target="_blank" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-print"></i> Cetak Surat</a>
     <a href="<?= base_url('surat/cetak_amplop/' . $jenis_surat . '/' . $id) ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-envelope"></i> Cetak Amplop</a>
     <a href="<?= base_url($level . '/edit_surat') ?>" class="btn btn-outline-primary btn-sm mt-1"><i class="fas fa-edit"></i> Edit Surat</a>
-    <a href="#" class="btn btn-outline-primary btn-sm mt-1" data-toggle="modal" data-target="#modal-notification"><i class="fas fa-trash"></i> Hapus Surat</a>
+    <a href="#"  class="btn btn-outline-primary btn-sm mt-1" data-toggle="modal" data-target="#modal-notification"><i class="fas fa-trash"></i> Hapus Surat</a>
 
     <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
         <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
@@ -38,11 +38,9 @@ if ($this->session->userdata('level') == 0) {
                 </div>
 
                 <div class="modal-footer">
-                    <?php if ($level == 'siswa') : ?>
-                        <a href="<?= base_url('siswa/lihat_tugas') ?>"><button type="button" class="btn btn-white px-5">Ya</button></a>
-                    <?php else : ?>
-                        <a href="<?= base_url('guru/surat') ?>"><button type="button" class="btn btn-white col-md-6 px-5">Ya</button></a>
-                    <?php endif; ?>
+                   
+                        <a href="<?= base_url('surat/hapus_surat/' . $id_surat . '/' . $id_tugas) ?>"><button type="button" class="btn btn-white px-5">Ya</button></a>
+                
                     <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Tidak</button>
                 </div>
 

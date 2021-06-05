@@ -62,9 +62,19 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="<?=base_url('surat/preview/'.$row->id_surat.'/'.$id_tugas)?>">Lihat Surat</a>
                                             <a class="dropdown-item" href="<?=base_url('siswa/cetak_surat')?>">Cetak Surat</a>
-                                            <a class="dropdown-item" href="<?=base_url('siswa/cetak_amplop')?>">Cetak Amplop</a>
-                                            <a class="dropdown-item" href="<?=base_url('siswa/edit_surat')?>">Edit Surat</a>
-                                            <a class="dropdown-item" href="<?=base_url('siswa/lihat_tugas')?>">Hapus Surat</a>
+                                            <a class="dropdown-item" href="<?= base_url('surat/cetak_amplop/' . $row->jenis_surat . '/' . $row->id_surat) ?>">Cetak Amplop</a>
+                                            <?php
+                                            if($row->jenis_surat == 'Dinas'){
+                                                ?><a class="dropdown-item" href="<?=base_url('siswa/edit_surat_dinas/'.$row->id_surat)?>">Edit Surat</a> <?php
+                                            }
+                                            elseif($row->jenis_surat == 'Niaga'){
+                                                ?><a class="dropdown-item" href="<?=base_url('siswa/edit_surat_niaga/'.$row->id_surat)?>">Edit Surat</a><?php
+                                            }
+                                            elseif($row->jenis_surat == 'Pribadi'){
+                                                ?> <a class="dropdown-item" href="<?=base_url('siswa/edit_surat_pribadi/'.$row->id_surat)?>">Edit Surat</a><?php
+                                            }
+                                            ?>
+                                            <a class="dropdown-item" href="<?= base_url('surat/hapus_surat/' . $row->id_surat . '/' . $id_tugas) ?>">Hapus Surat</a>
                                         </div>
                                     </div>
                                 </td>
